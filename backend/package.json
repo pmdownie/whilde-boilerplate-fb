@@ -1,0 +1,44 @@
+{
+  "name": "rest-api-boilerplate",
+  "version": "1.0.0",
+  "description": "Boilerplate for REST Api's with express, mongoose and mondodb",
+  "main": "index.js",
+  "keywords": [
+    "API",
+    "REST",
+    "Mongoose",
+    "MongoDB",
+    "Express"
+  ],
+  "scripts": {
+    "dev": "NODE_ENV=development nodemon --exec babel-node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Patrick Downie (patrick@whildestudios.com)",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
+    "@babel/polyfill": "^7.2.5",
+    "@babel/preset-env": "^7.2.3",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.12.1",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-react": "^7.12.4",
+    "nodemon": "^1.18.9"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "chalk": "^2.4.2",
+    "compression": "^1.7.3",
+    "cors": "^2.8.5",
+    "dotenv": "^6.2.0",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "moment": "^2.23.0",
+    "mongoose": "^5.4.5",
+    "mongoose-string-query": "^0.2.5",
+    "mongoose-timestamp": "^0.6.0",
+    "winston": "^3.1.0"
+  }
+}
