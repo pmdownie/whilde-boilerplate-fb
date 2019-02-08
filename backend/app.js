@@ -3,7 +3,8 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import compression from 'compression';
 import { renderFile } from 'ejs';
-import userRoutes from './routes/user';
+import routes from './routes';
+import fetchRoutes from './routes/fetch';
 const app = express();
 
 app.use(cors());
@@ -13,6 +14,7 @@ app.use(bodyParser.json());
 app.engine('html', renderFile);
 app.set('view engine', 'html');
 
-app.use('/user', userRoutes);
+app.use('/', routes);
+app.use('/fetch', fetchRoutes);
 
 export default app;

@@ -10,13 +10,11 @@ const server = app.listen(config.port, err => {
         process.exit(1);
     }
 
-    require('./utils/db');
+    require('./utils/contentful');
 
     config.env === 'development'
         ? logger.info(
-              chalk.blue.bgYellow.bold(
-                  `Listening at address http://localhost:${config.port}`
-              )
+              chalk.white.bold(`Listening at address http://localhost:${config.port}`)
           )
         : logger.info(`Express running → PORT ${server.address().port}`);
 });
