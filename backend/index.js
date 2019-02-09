@@ -10,8 +10,6 @@ const server = app.listen(config.port, err => {
         process.exit(1);
     }
 
-    require('./utils/contentful');
-
     config.env === 'development'
         ? logger.info(
               chalk.white.bold(`Listening at address http://localhost:${config.port}`)
