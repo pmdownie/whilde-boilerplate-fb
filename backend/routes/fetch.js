@@ -5,6 +5,7 @@ const router = express.Router();
 const { catchErrors } = errorHandlers;
 
 router.get('/', contentController.index);
+router.get('/homepage', catchErrors(contentController.getHomepage));
 router.get('/about', catchErrors(contentController.getAbout));
 router.get('/all-categories', catchErrors(contentController.getAllCategories));
 router.get('/category/:id', catchErrors(contentController.getCategory));
