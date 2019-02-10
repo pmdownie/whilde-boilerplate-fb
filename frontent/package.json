@@ -11,6 +11,7 @@
         "start": "next start"
     },
     "dependencies": {
+        "axios": "^0.18.0",
         "babel-eslint": "9.x",
         "eslint": "5.x",
         "eslint-config-react-app": "^3.0.6",
@@ -21,6 +22,9 @@
         "next": "^7.0.2",
         "next-eslint": "^0.0.4",
         "react": "^16.8.1",
+        "react-redux": "^6.0.0",
+        "redux": "^4.0.1",
+        "redux-thunk": "^2.3.0",
         "react-dom": "^16.8.1",
         "styled-components": "^4.1.3"
     },
