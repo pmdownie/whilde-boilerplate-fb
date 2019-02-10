@@ -3,6 +3,20 @@ import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
 
 const theme = {
     black: '#000000',
+    white: '#ffffff',
+    grey: '#4c4c4c',
+    lightgrey: '#BFBFBF',
+    gutters: '30px',
+
+    // media queries
+    desktoplarge: '1350px',
+    desktop: '1022px',
+    tablet: '1021px',
+    mobile: '750px',
+    mobilesmall: '321px',
+
+    //  easing
+    easing: 'cubic-bezier(0.4, 0.0, 0.2, 1)',
 }
 
 const GlobalStyle = createGlobalStyle`
@@ -25,6 +39,7 @@ const GlobalStyle = createGlobalStyle`
     html {
         box-sizing: border-box;
         font-size: 10px;
+        color: ${theme.black};
     }
 
     *, *:before, *:after {
@@ -36,6 +51,7 @@ const GlobalStyle = createGlobalStyle`
         margin: 0;
         font-size: 1.5rem;
         line-height: 2;
+        letter-spacing: -0.01rem;
         font-family: 'GT America';
         font-weight: 200;
     }
