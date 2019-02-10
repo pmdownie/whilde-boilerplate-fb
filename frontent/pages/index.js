@@ -9,7 +9,7 @@ const mapStateToProps = ({ homepage }) => ({ homepage })
 
 class Home extends React.Component {
     static async getInitialProps({ store }) {
-        // await store.dispatch(fetchContent('HOMEPAGE'))
+        await store.dispatch(fetchContent('HOMEPAGE'))
         return {}
     }
 
