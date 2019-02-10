@@ -5,11 +5,19 @@ import { Provider } from 'react-redux'
 import Page from '../components/Page'
 
 class MyApp extends App {
+    static async getInitialProps({ Component, ctx }) {
+        return {
+            pageProps: Component.getInitialProps
+                ? await Component.getInitialProps(ctx)
+                : {},
+        }
+    }
+
     render() {
-        const { Component, pageProps, reduxStore } = this.props
+        const { Component, pageProps, store } = this.props
         return (
             <Container>
-                <Provider store={reduxStore}>
+                <Provider store={store}>
                     <Page>
                         <Component {...pageProps} />
                     </Page>

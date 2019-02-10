@@ -1,6 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import cors from 'cors';
+import cors from './utils/cors';
 import compression from 'compression';
 import { renderFile } from 'ejs';
 import routes from './routes';

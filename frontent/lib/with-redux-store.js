@@ -25,7 +25,7 @@ export default App => {
             const reduxStore = getOrCreateStore()
 
             // Provide the store to getInitialProps of pages
-            appContext.ctx.reduxStore = reduxStore
+            appContext.ctx.store = reduxStore
 
             let appProps = {}
             if (typeof App.getInitialProps === 'function') {
@@ -44,7 +44,7 @@ export default App => {
         }
 
         render() {
-            return <App {...this.props} reduxStore={this.reduxStore} />
+            return <App {...this.props} store={this.reduxStore} />
         }
     }
 }

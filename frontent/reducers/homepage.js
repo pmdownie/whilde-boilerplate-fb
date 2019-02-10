@@ -22,10 +22,32 @@ const error = (error = null, action) => {
         : error
 }
 
+const content = (content = {}, action) => {
+    switch (action.type) {
+        case api.HOMEPAGE_CONTENT_FETCH_SUCCESS:
+            const data = action.data.data.items[0].fields
+            return {
+                ...data,
+                image: data.image.fields.file,
+                imageMobile: data.imageMobile.fields.file,
+                categories: data.categories.map(i => {
+                    return {
+                        ...i.fields,
+                        image: i.fields.image.fields.file,
+                        imageMobile: i.fields.imageMobile.fields.file,
+                    }
+                }),
+            }
+        default:
+            return content
+    }
+}
+
 const homepage = combineReducers({
     loading,
     loaded,
     error,
+    content,
 })
 
 export default homepage
