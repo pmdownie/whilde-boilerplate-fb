@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled, { css } from 'styled-components'
 
 const Container = styled.div`
@@ -24,20 +24,14 @@ const Slide = styled.div`
         `}
 `
 
-class Gallery extends Component {
-    render() {
-        return (
-            <Container>
-                {this.props.gallery.map((image, i) => (
-                    <Slide
-                        key={i}
-                        image={image}
-                        active={i === this.props.active}
-                    />
-                ))}
-            </Container>
-        )
-    }
+const Gallery = ({ gallery, active }) => {
+    return (
+        <Container>
+            {gallery.map((image, i) => (
+                <Slide key={i} image={image} active={i === active} />
+            ))}
+        </Container>
+    )
 }
 
 export default Gallery

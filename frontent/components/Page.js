@@ -1,6 +1,7 @@
 import React from 'react'
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
 import Meta from './Meta'
+import DetectDevice from './DetectDevice'
 
 const theme = {
     black: '#000000',
@@ -81,11 +82,13 @@ const Inner = styled.div`
 const Page = ({ children }) => {
     return (
         <ThemeProvider theme={theme}>
-            <Inner>
-                <Meta />
-                <GlobalStyle />
-                {children}
-            </Inner>
+            <DetectDevice>
+                <Inner>
+                    <Meta />
+                    <GlobalStyle />
+                    {children}
+                </Inner>
+            </DetectDevice>
         </ThemeProvider>
     )
 }

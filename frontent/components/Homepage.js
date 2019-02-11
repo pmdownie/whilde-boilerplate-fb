@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import Menu from './Menu'
 import Gallery from './Gallery'
 
-const mapStateToProps = ({ homepage }) => ({ homepage })
+const mapStateToProps = ({ homepage, device }) => ({ homepage, device })
 
 const Container = styled.div`
     display: grid;
@@ -43,6 +43,28 @@ class Homepage extends Component {
 
     componentDidMount() {
         this.setGallery()
+        if (this.props.device.mobile)
+            this.autoplay = setInterval(() => this.setAutoPlay(), 5000)
+    }
+
+    componentDidUpdate(prevProps) {
+        const { mobile } = this.props.device
+        if (mobile && mobile !== prevProps.device.mobile)
+            this.autoplay = setInterval(() => this.setAutoPlay(), 5000)
+        if (!mobile && mobile !== prevProps.device.mobile)
+            clearTimeout(this.autoplay)
+    }
+
+    componentWillUnmount() {
+        clearTimeout(this.autoplay)
+    }
+
+    setAutoPlay = () => {
+        const { active } = this.state
+        const { categories } = this.props.homepage.content
+
+        if (active === categories.length) return this.setState({ active: 0 })
+        return this.setState(({ active }) => ({ active: active + 1 }))
     }
 
     setGallery = () => {
@@ -80,7 +102,11 @@ class Homepage extends Component {
                 </div>
                 <div className="right">
                     <Gallery
-                        gallery={this.state.gallery}
+                        gallery={
+                            this.props.device.mobile
+                                ? this.state.galleryMobile
+                                : this.state.gallery
+                        }
                         active={this.state.active}
                     />
                 </div>
