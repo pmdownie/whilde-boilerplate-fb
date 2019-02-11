@@ -54,15 +54,28 @@ const GlobalStyle = createGlobalStyle`
         letter-spacing: -0.01rem;
         font-family: 'GT America';
         font-weight: 200;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
     }
 
     a {
         text-decoration: none;
         color: ${theme.black};
     }
+
+    ul {
+        padding: 0;
+        margin: 0;
+    }
+
+    li {
+        list-style-type: none;
+    }
 `
 
-const Inner = styled.div``
+const Inner = styled.div`
+    min-height: 100vh;
+`
 
 const Page = ({ children }) => {
     return (

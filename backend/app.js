@@ -1,13 +1,20 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import cors from './utils/cors';
 import compression from 'compression';
 import { renderFile } from 'ejs';
 import routes from './routes';
 import fetchRoutes from './routes/fetch';
 const app = express();
 
-app.use(cors());
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header(
+        'Access-Control-Allow-Headers',
+        'Origin, X-Requested-With, Content-Type, Accept'
+    );
+    next();
+});
+
 app.use(compression());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
