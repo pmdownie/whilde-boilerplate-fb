@@ -25,7 +25,7 @@ const error = (error = null, action) => {
 const content = (content = {}, action) => {
     switch (action.type) {
         case api.HOMEPAGE_CONTENT_FETCH_SUCCESS:
-            const data = action.data.data.items[0].fields
+            const data = action.data.items[0].fields
             return {
                 ...data,
                 image: data.image.fields.file,

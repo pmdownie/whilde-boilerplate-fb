@@ -28,15 +28,9 @@ export const fetchContent = type => async dispatch => {
         const data = await axios.get(
             `http://localhost:2424/fetch${routes[type]}`
         )
-        dispatch(loadingContentSuccess(type, data))
+        dispatch(loadingContentSuccess(type, data.data))
         return data.data
     } catch (error) {
         dispatch(loadingContentFail(type, error))
     }
 }
-
-// export const fetchItems = type => async dispatch =>
-//     axios
-//         .get(`http://localhost:2424/fetch${routes[type]}`)
-//         .then(({ data }) => data)
-//         .then(items => dispatch({ type: 'SET_ITEMS', items }))

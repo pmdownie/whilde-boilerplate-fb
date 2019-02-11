@@ -1,6 +1,6 @@
 import React from 'react'
 import Icon from './Icon'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 const Container = styled.div`
     display: flex;
@@ -15,13 +15,20 @@ const Container = styled.div`
         height: 3rem;
         margin: 0 1.2rem;
         background: ${({ theme }) => theme.black};
+        transition: background-color 0.3s ease;
+
+        ${({ white }) =>
+            white &&
+            css`
+                background: ${({ theme }) => theme.white};
+            `}
     }
 `
 
-const Logo = () => {
+const Logo = ({ white }) => {
     return (
-        <Container>
-            <Icon />
+        <Container white={white}>
+            <Icon white={white} />
             <span className="line" />
             <span className="name">Nadine Dewart</span>
         </Container>

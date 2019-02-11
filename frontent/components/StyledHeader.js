@@ -1,11 +1,20 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 const StyledHeader = styled.header`
+    position: relative;
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
     height: 6rem;
     padding: 0 3rem;
+    z-index: ${({ theme }) => theme.zIndexHeader};
+    transition: color 0.3s ease;
+
+    ${({ infoOpen }) =>
+        infoOpen &&
+        css`
+            color: ${({ theme }) => theme.white};
+        `}
 
     .right {
         justify-self: end;
