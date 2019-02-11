@@ -1,11 +1,11 @@
 import React from 'react'
-import Link from 'next/link'
 import { fetchContent } from '../actions/content'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import StyledHeader from '../components/StyledHeader'
 import StyledFooter from '../components/StyledFooter'
 import Logo from '../components/Logo'
+import MenuIcon from '../components/MenuIcon'
 import Homepage from '../components/Homepage'
 
 const mapStateToProps = ({ homepage }) => ({ homepage })
@@ -27,9 +27,10 @@ class Home extends React.Component {
             <Container>
                 <StyledHeader>
                     <Logo />
-                    <Link href="/about">
-                        <a className="right">Info</a>
-                    </Link>
+                    <span className="info right">Info</span>
+                    <div className="mobile right">
+                        <MenuIcon />
+                    </div>
                 </StyledHeader>
                 <Homepage />
                 <StyledFooter>

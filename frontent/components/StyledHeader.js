@@ -10,6 +10,19 @@ const StyledHeader = styled.header`
     .right {
         justify-self: end;
     }
+
+    .info {
+        @media (max-width: ${({ theme }) => theme.mobile}) {
+            display: none;
+        }
+    }
+
+    .mobile {
+        display: none;
+        @media (max-width: ${({ theme }) => theme.mobile}) {
+            display: block;
+        }
+    }
 `
 
 export default StyledHeader

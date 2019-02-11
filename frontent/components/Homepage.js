@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
+import Menu from './Menu'
+import Gallery from './Gallery'
 
 const mapStateToProps = ({ homepage }) => ({ homepage })
 
@@ -11,79 +13,77 @@ const Container = styled.div`
     justify-items: center;
     padding: 0 3rem;
 
-    .left {
-        text-align: center;
-        transition: color 0.2s ease;
+    @media (max-width: ${({ theme }) => theme.mobile}) {
+        grid-template-columns: 1fr;
+    }
 
-        &:hover {
-            color: ${({ theme }) => theme.lightgrey};
+    .left {
+        @media (max-width: ${({ theme }) => theme.mobile}) {
+            display: none;
         }
     }
 
     .right {
         align-self: stretch;
         justify-self: stretch;
-        background: url(https:${({ background }) => background}) center/cover
-            no-repeat;
-    }
 
-    .link {
-        font-size: 4.8rem;
-        line-height: 1.65;
-        transition: color 0.2s ease;
-        cursor: pointer;
-
-        &:hover {
-            color: ${({ theme }) => theme.black};
+        @media (max-width: ${({ theme }) => theme.mobile}) {
+            height: 110vw;
+            align-self: center;
         }
     }
 `
 
 class Homepage extends Component {
     state = {
-        background: '',
+        active: 0,
+        gallery: [],
+        galleryMobile: [],
     }
 
     componentDidMount() {
-        this.handleMouseLeave()
+        this.setGallery()
     }
 
-    handleMouseEnter = i => {
-        const { categories } = this.props.homepage.content
-        const background = categories[i].image.url
-        this.setState({ background })
-    }
-
-    handleMouseLeave = i => {
-        const { content } = this.props.homepage
-        this.setState({ background: content.image.url })
-    }
-
-    renderCategories = () => {
-        let categories = []
+    setGallery = () => {
         const { content } = this.props.homepage
 
-        for (let i = 0; i < content.categories.length; i++) {
-            categories.push(
-                <li
-                    key={i}
-                    className="link"
-                    onMouseEnter={() => this.handleMouseEnter(i)}
-                    onMouseLeave={() => this.handleMouseLeave()}
-                >
-                    {content.categories[i].title}
-                </li>
-            )
-        }
+        const gallery = content.categories.reduce((tally, category) => {
+            tally.push(category.image.url)
+            return tally
+        }, [])
 
-        return categories
+        const galleryMobile = content.categories.reduce((tally, category) => {
+            tally.push(category.imageMobile.url)
+            return tally
+        }, [])
+
+        gallery.unshift(content.image.url)
+        galleryMobile.unshift(content.imageMobile.url)
+
+        this.setState({ gallery, galleryMobile })
     }
+
+    handleMouseEnter = active => this.setState({ active })
+
+    handleMouseLeave = () => this.setState({ active: 0 })
 
     render() {
         return (
             <Container background={this.state.background}>
-                <ul className="left">{this.renderCategories()}</ul>
-                <div className="right" />
+                <div className="left">
+                    <Menu
+                        handleMouseEnter={this.handleMouseEnter}
+                        handleMouseLeave={this.handleMouseLeave}
+                        items={this.props.homepage.content.categories}
+                    />
+                </div>
+                <div className="right">
+                    <Gallery
+                        gallery={this.state.gallery}
+                        active={this.state.active}
+                    />
+                </div>
             </Container>
         )
     }
