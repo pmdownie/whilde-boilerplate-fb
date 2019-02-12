@@ -40,7 +40,7 @@ class Home extends React.Component {
                         className="mobile right"
                         onClick={this.props.toggleInfo}
                     >
-                        <MenuIcon />
+                        {this.props.info.open ? 'Close' : <MenuIcon />}
                     </div>
                 </StyledHeader>
                 <Info />

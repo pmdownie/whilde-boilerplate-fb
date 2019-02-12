@@ -16,6 +16,10 @@ const StyledHeader = styled.header`
             color: ${({ theme }) => theme.white};
         `}
 
+    @media (max-width: ${({ theme }) => theme.mobile}) {
+        grid-template-columns: 1fr auto;
+    }
+
     .right {
         justify-self: end;
     }

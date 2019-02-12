@@ -69,13 +69,17 @@ const GlobalStyle = createGlobalStyle`
         color: ${theme.black};
     }
 
-    ul {
+    ul,p {
         padding: 0;
         margin: 0;
     }
 
     li {
         list-style-type: none;
+    }
+
+    p {
+        margin-bottom: 1rem;
     }
 `
 

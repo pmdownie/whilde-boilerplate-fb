@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import marked from 'marked'
 import { fetchContent } from '../actions/content'
 import { toggleInfo } from '../actions/info'
 import styled, { css } from 'styled-components'
@@ -17,6 +18,10 @@ const Container = styled.div`
     color: ${({ theme }) => theme.white};
     background-color: ${({ theme }) => theme.lightgrey};
     z-index: ${({ theme }) => theme.zIndexInfo};
+
+    @media (max-width: ${({ theme }) => theme.mobile}) {
+        padding-top: 10rem;
+    }
 
     .header {
         display: grid;
@@ -48,13 +53,19 @@ const Copy = styled.div`
     width: 38rem;
     line-height: 1.5;
     opacity: 0;
+    z-index: 1;
     transition: opacity 0.3s ease;
 
     ${({ active }) =>
         active &&
         css`
             opacity: 1;
+            z-index: 5;
         `}
+
+    @media (max-width: ${({ theme }) => theme.mobile}) {
+        width: 100%;
+    }
 `
 
 class Info extends Component {
@@ -93,9 +104,8 @@ class Info extends Component {
                         key={i}
                         className={`copy ${i}`}
                         active={this.state.active === i}
-                    >
-                        {content[i]}
-                    </Copy>
+                        dangerouslySetInnerHTML={{ __html: marked(content[i]) }}
+                    />
                 )
             }
         })
