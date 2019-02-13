@@ -9,7 +9,9 @@ const StyledNav = styled.ul`
 
     @media (min-width: ${({ theme }) => theme.desktop}) {
         &:hover {
-            color: ${({ theme }) => theme.lightgrey};
+            a {
+                color: ${({ theme }) => theme.lightgrey};
+            }
         }
     }
 
@@ -20,18 +22,23 @@ const StyledNav = styled.ul`
     li {
         font-size: 4.8rem;
         line-height: 1.65;
-        transition: color 0.2s ease;
         cursor: pointer;
 
         @media (min-width: ${({ theme }) => theme.desktop}) {
             &:hover {
-                color: ${({ theme }) => theme.black};
+                a {
+                    color: ${({ theme }) => theme.black};
+                }
             }
         }
 
         @media (max-width: ${({ theme }) => theme.mobile}) {
             font-size: 3.6rem;
         }
+    }
+
+    a {
+        transition: color 0.2s ease;
     }
 `
 
@@ -48,7 +55,10 @@ const Nav = ({ handleMouseEnter, handleMouseLeave, homepage: { content } }) => {
                         handleMouseLeave ? () => handleMouseLeave() : null
                     }
                 >
-                    <Link href="/category?category=hello" as="/hello">
+                    <Link
+                        href={`/category?category=${item.id}`}
+                        as={`/${item.id}`}
+                    >
                         <a>{item.title}</a>
                     </Link>
                 </li>

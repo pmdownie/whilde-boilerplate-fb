@@ -15,18 +15,17 @@ const loadingContentSuccess = (type, data) => {
 }
 
 const loadingContentFail = (type, error) => {
-    console.log(error)
     return {
         type: api[`${type}_CONTENT_FETCH_FAIL`],
         error,
     }
 }
 
-export const fetchContent = type => async dispatch => {
+export const fetchContent = (type, id) => async dispatch => {
     dispatch(loadingContent(type))
     try {
         const data = await axios.get(
-            `http://localhost:2424/fetch${routes[type]}`
+            `http://localhost:2424/fetch${routes[type]}${id ? `/${id}` : ``}`
         )
         dispatch(loadingContentSuccess(type, data.data))
         return data.data
