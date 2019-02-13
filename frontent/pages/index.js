@@ -1,22 +1,17 @@
 import React from 'react'
 import { fetchContent } from '../actions/content'
 import { toggleInfo } from '../actions/info'
-import { toggleMenu } from '../actions/menu'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import StyledHeader from '../components/StyledHeader'
 import StyledFooter from '../components/StyledFooter'
 import Logo from '../components/Logo'
-import Info from '../components/Info'
-import Menu from '../components/Menu'
-import MenuIcon from '../components/MenuIcon'
+import MenuTrigger from '../components/MenuTrigger'
 import Homepage from '../components/Homepage'
 
-const mapStateToProps = ({ homepage, info, device, menu }) => ({
+const mapStateToProps = ({ homepage, info }) => ({
     homepage,
     info,
-    device,
-    menu,
 })
 
 const Container = styled.div`
@@ -45,8 +40,6 @@ class Home extends React.Component {
     render() {
         return (
             <Container {...this.state}>
-                <Info />
-                <Menu />
                 <StyledHeader infoOpen={this.props.info.open}>
                     <Logo white={this.props.info.open} />
                     <span
@@ -55,20 +48,7 @@ class Home extends React.Component {
                     >
                         {this.props.info.open ? 'Close' : 'Info'}
                     </span>
-                    <div
-                        className="mobile right"
-                        onClick={
-                            this.props.info.open
-                                ? this.props.toggleInfo
-                                : this.props.toggleMenu
-                        }
-                    >
-                        {this.props.info.open || this.props.menu.open ? (
-                            'Close'
-                        ) : (
-                            <MenuIcon />
-                        )}
-                    </div>
+                    <MenuTrigger />
                 </StyledHeader>
                 <Homepage />
                 <StyledFooter>
@@ -83,5 +63,5 @@ class Home extends React.Component {
 
 export default connect(
     mapStateToProps,
-    { fetchContent, toggleInfo, toggleMenu }
+    { fetchContent, toggleInfo }
 )(Home)

@@ -19,6 +19,26 @@ const StyledFooter = styled.footer`
         transform: translate(-50%, -50%);
         color: ${({ theme }) => theme.lightgrey};
     }
+
+    .bold {
+        font-weight: 700;
+    }
+
+    .mobile {
+        display: none;
+        @media (max-width: ${({ theme }) => theme.mobile}) {
+            display: block;
+        }
+    }
+    .hideMobile {
+        @media (max-width: ${({ theme }) => theme.mobile}) {
+            display: none;
+        }
+    }
+
+    .grey {
+        color: ${({ theme }) => theme.lightgrey};
+    }
 `
 
 export default StyledFooter

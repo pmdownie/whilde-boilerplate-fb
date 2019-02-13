@@ -36,6 +36,16 @@ const StyledHeader = styled.header`
             display: block;
         }
     }
+
+    .hideMobile {
+        @media (max-width: ${({ theme }) => theme.mobile}) {
+            display: none;
+        }
+    }
+
+    .bold {
+        font-weight: 700;
+    }
 `
 
 export default StyledHeader

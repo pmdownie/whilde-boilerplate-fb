@@ -2,6 +2,8 @@ import React from 'react'
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
 import Meta from './Meta'
 import DetectDevice from './DetectDevice'
+import Info from '../components/Info'
+import Menu from '../components/Menu'
 
 const theme = {
     black: '#000000',
@@ -47,6 +49,7 @@ const GlobalStyle = createGlobalStyle`
     body,
     #__next {
         height: 100%;
+    overflow-x: hidden;
     }
 
     html {
@@ -105,6 +108,8 @@ const Page = ({ children }) => {
                 <Inner>
                     <Meta />
                     <GlobalStyle />
+                    <Info />
+                    <Menu />
                     {children}
                 </Inner>
             </DetectDevice>

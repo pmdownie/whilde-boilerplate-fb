@@ -56,6 +56,7 @@ const Nav = ({ handleMouseEnter, handleMouseLeave, homepage: { content } }) => {
                     }
                 >
                     <Link
+                        prefetch
                         href={`/category?category=${item.id}`}
                         as={`/${item.id}`}
                     >

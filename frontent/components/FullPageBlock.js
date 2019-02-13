@@ -6,21 +6,13 @@ const FullPageBlock = styled.div`
     height: 100vh;
     width: 100vw;
     z-index: ${({ theme, zIndex }) => theme[zIndex]};
+    transform: translateX(110vw);
+    transition: transform 0.5s ${({ theme }) => theme.easing};
 
     @media (max-width: ${({ theme }) => theme.mobile}) {
         height: 100%;
+        transition: transform 0.3s ${({ theme }) => theme.easing};
     }
-
-    ${({ slideIn }) =>
-        slideIn &&
-        css`
-            transform: translateX(110vw);
-            transition: transform 0.5s ${({ theme }) => theme.easing};
-
-            @media (max-width: ${({ theme }) => theme.mobile}) {
-                transition: transform 0.3s ${({ theme }) => theme.easing};
-            }
-        `}
 
     ${({ open }) =>
         open &&
