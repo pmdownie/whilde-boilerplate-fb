@@ -1,6 +1,8 @@
 import React from 'react'
+import Router from 'next/router'
 import { connect } from 'react-redux'
 import { toggleInfo } from '../actions/info'
+import { toggleMenu } from '../actions/menu'
 import styled from 'styled-components'
 import FullPageBlock from './FullPageBlock'
 import Nav from './Nav'
@@ -28,10 +30,18 @@ const Container = styled.div`
     }
 `
 
-const Menu = ({ menu, toggleInfo }) => (
+const Menu = ({ menu, toggleInfo, toggleMenu }) => (
     <FullPageBlock zIndex="zIndexMenu" open={menu.open} slideIn>
         <Container>
-            <div className="home">Home</div>
+            <div
+                className="home"
+                onClick={() => {
+                    Router.push('/')
+                    toggleMenu()
+                }}
+            >
+                Home
+            </div>
             <Nav />
             <div className="info" onClick={toggleInfo}>
                 Info
@@ -42,5 +52,5 @@ const Menu = ({ menu, toggleInfo }) => (
 
 export default connect(
     ({ menu }) => ({ menu }),
-    { toggleInfo }
+    { toggleInfo, toggleMenu }
 )(Menu)
