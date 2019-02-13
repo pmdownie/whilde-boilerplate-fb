@@ -1,40 +1,46 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { toggleInfo } from '../actions/info'
 import styled from 'styled-components'
+import FullPageBlock from './FullPageBlock'
+import Nav from './Nav'
 
-const StyledMenu = styled.ul`
-    text-align: center;
-    transition: color 0.2s ease;
+const Container = styled.div`
+    position: relative;
+    display: grid;
+    grid-template-rows: auto min-content auto;
+    height: 100%;
+    background: ${({ theme }) => theme.white};
+    justify-items: center;
+    align-items: center;
 
-    &:hover {
-        color: ${({ theme }) => theme.lightgrey};
+    .home,
+    .info {
+        font-size: 3.2rem;
     }
 
-    li {
-        font-size: 4.8rem;
-        line-height: 1.65;
-        transition: color 0.2s ease;
-        cursor: pointer;
+    .home {
+        align-self: end;
+    }
 
-        &:hover {
-            color: ${({ theme }) => theme.black};
-        }
+    .info {
+        align-self: start;
     }
 `
 
-const Menu = ({ handleMouseEnter, handleMouseLeave, items }) => {
-    return (
-        <StyledMenu>
-            {items.map((item, i) => (
-                <li
-                    key={item.id}
-                    onMouseEnter={() => handleMouseEnter(i + 1)}
-                    onMouseLeave={() => handleMouseLeave()}
-                >
-                    {item.title}
-                </li>
-            ))}
-        </StyledMenu>
-    )
-}
+const Menu = ({ menu, toggleInfo }) => (
+    <FullPageBlock zIndex="zIndexMenu" open={menu.open} slideIn>
+        <Container>
+            <div className="home">Home</div>
+            <Nav />
+            <div className="info" onClick={toggleInfo}>
+                Info
+            </div>
+        </Container>
+    </FullPageBlock>
+)
 
-export default Menu
+export default connect(
+    ({ menu }) => ({ menu }),
+    { toggleInfo }
+)(Menu)

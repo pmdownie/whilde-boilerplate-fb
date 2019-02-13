@@ -21,8 +21,9 @@ const theme = {
     easing: 'cubic-bezier(0.4, 0.0, 0.2, 1)',
 
     // z-index
-    zIndexInfo: '10',
-    zIndexHeader: '20',
+    zIndexMenu: '10',
+    zIndexInfo: '20',
+    zIndexHeader: '30',
 }
 
 const GlobalStyle = createGlobalStyle`

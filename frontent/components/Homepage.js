@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
-import Menu from './Menu'
+import Nav from './Nav'
 import Gallery from './Gallery'
 
 const mapStateToProps = ({ homepage, device }) => ({ homepage, device })
@@ -94,10 +94,9 @@ class Homepage extends Component {
         return (
             <Container background={this.state.background}>
                 <div className="left">
-                    <Menu
+                    <Nav
                         handleMouseEnter={this.handleMouseEnter}
                         handleMouseLeave={this.handleMouseLeave}
-                        items={this.props.homepage.content.categories}
                     />
                 </div>
                 <div className="right">

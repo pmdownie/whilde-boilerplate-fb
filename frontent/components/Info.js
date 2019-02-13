@@ -5,37 +5,26 @@ import { fetchContent } from '../actions/content'
 import { toggleInfo } from '../actions/info'
 import styled, { css } from 'styled-components'
 import toTitleCase from '../lib/to-title-case'
+import FullPageBlock from './FullPageBlock'
 
 const mapStateToProps = ({ info }) => ({ info })
 
 const Container = styled.div`
-    position: absolute;
-    top: 0;
-    height: 100vh;
-    width: 100vw;
+    position: relative;
+    height: 100%;
     padding: 0 3rem;
-    padding-top: 12rem;
     color: ${({ theme }) => theme.white};
     background-color: ${({ theme }) => theme.lightgrey};
-    transform: translateX(110vw);
-    z-index: ${({ theme }) => theme.zIndexInfo};
-    transition: transform 0.45s ${({ theme }) => theme.easing};
-
-    ${({ open }) =>
-        open &&
-        css`
-            transform: translateX(0);
-            transition: transform 0.5s ${({ theme }) => theme.easing};
-        `}
-
-    @media (max-width: ${({ theme }) => theme.mobile}) {
-        padding-top: 8rem;
-    }
 
     .header {
+        padding-top: 12rem;
         display: grid;
         grid-template-columns: repeat(2, min-content);
         column-gap: 1rem;
+
+        @media (max-width: ${({ theme }) => theme.mobile}) {
+            padding-top: 8rem;
+        }
     }
 
     .body {
@@ -124,21 +113,27 @@ class Info extends Component {
 
     render() {
         return (
-            <Container open={this.props.info.open}>
-                <div className="header">
-                    {this.state.links.map(i => (
-                        <Link
-                            key={i}
-                            className="link"
-                            onClick={() => this.switchLanguage(i)}
-                            active={this.state.active === i}
-                        >
-                            {toTitleCase(i)}
-                        </Link>
-                    ))}
-                </div>
-                <div className="body">{this.renderCopy()}</div>
-            </Container>
+            <FullPageBlock
+                slideIn
+                open={this.props.info.open}
+                zIndex="zIndexInfo"
+            >
+                <Container>
+                    <div className="header">
+                        {this.state.links.map(i => (
+                            <Link
+                                key={i}
+                                className="link"
+                                onClick={() => this.switchLanguage(i)}
+                                active={this.state.active === i}
+                            >
+                                {toTitleCase(i)}
+                            </Link>
+                        ))}
+                    </div>
+                    <div className="body">{this.renderCopy()}</div>
+                </Container>
+            </FullPageBlock>
         )
     }
 }
