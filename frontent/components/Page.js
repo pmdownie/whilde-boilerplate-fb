@@ -42,6 +42,12 @@ const GlobalStyle = createGlobalStyle`
             url('/static/fonts/GT-America-Standard-Light.woff') format('woff');
     }
 
+    html,
+    body,
+    #__next {
+        height: 100%;
+    }
+
     html {
         box-sizing: border-box;
         font-size: 10px;
@@ -62,6 +68,10 @@ const GlobalStyle = createGlobalStyle`
         font-weight: 200;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+
+        @media (max-width: ${theme.mobile}) {
+            font-size: 1.3rem;
+        }
     }
 
     a {
@@ -84,7 +94,7 @@ const GlobalStyle = createGlobalStyle`
 `
 
 const Inner = styled.div`
-    min-height: 100vh;
+    height: 100%;
 `
 
 const Page = ({ children }) => {

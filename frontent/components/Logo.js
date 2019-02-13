@@ -8,6 +8,10 @@ const Container = styled.div`
 
     svg {
         width: 35px;
+
+        @media (max-width: ${({ theme }) => theme.mobile}) {
+            width: 33px;
+        }
     }
 
     .line {
@@ -22,6 +26,10 @@ const Container = styled.div`
             css`
                 background: ${({ theme }) => theme.white};
             `}
+
+        @media (max-width: ${({ theme }) => theme.mobile}) {
+            height: 2.8rem;margin: 0 1.1rem;
+        }
     }
 `
 

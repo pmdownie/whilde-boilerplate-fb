@@ -10,12 +10,26 @@ import Info from '../components/Info'
 import MenuIcon from '../components/MenuIcon'
 import Homepage from '../components/Homepage'
 
-const mapStateToProps = ({ homepage, info }) => ({ homepage, info })
+const mapStateToProps = ({ homepage, info, device }) => ({
+    homepage,
+    info,
+    device,
+})
 
 const Container = styled.div`
     display: grid;
+    position: relative;
     grid-template-rows: min-content auto min-content;
-    min-height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+
+    @media (min-width: ${({ theme }) => theme.mobile}) {
+        min-height: 100vh;
+    }
+
+    @media (max-width: ${({ theme }) => theme.mobile}) {
+        height: 100%;
+    }
 `
 
 class Home extends React.Component {
@@ -27,7 +41,7 @@ class Home extends React.Component {
 
     render() {
         return (
-            <Container>
+            <Container {...this.state}>
                 <StyledHeader infoOpen={this.props.info.open}>
                     <Logo white={this.props.info.open} />
                     <span

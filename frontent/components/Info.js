@@ -17,10 +17,19 @@ const Container = styled.div`
     padding-top: 12rem;
     color: ${({ theme }) => theme.white};
     background-color: ${({ theme }) => theme.lightgrey};
+    transform: translateX(110vw);
     z-index: ${({ theme }) => theme.zIndexInfo};
+    transition: transform 0.45s ${({ theme }) => theme.easing};
+
+    ${({ open }) =>
+        open &&
+        css`
+            transform: translateX(0);
+            transition: transform 0.5s ${({ theme }) => theme.easing};
+        `}
 
     @media (max-width: ${({ theme }) => theme.mobile}) {
-        padding-top: 10rem;
+        padding-top: 8rem;
     }
 
     .header {
@@ -83,7 +92,7 @@ class Info extends Component {
         const { content } = this.props.info
 
         Object.keys(content).forEach(i => {
-            if (i !== 'about') {
+            if (i !== 'title') {
                 links.push(i)
             }
         })
@@ -98,7 +107,7 @@ class Info extends Component {
         const { content } = this.props.info
 
         Object.keys(content).forEach(i => {
-            if (i !== 'about') {
+            if (i !== 'title') {
                 copy.push(
                     <Copy
                         key={i}
@@ -115,7 +124,7 @@ class Info extends Component {
 
     render() {
         return (
-            <Container>
+            <Container open={this.props.info.open}>
                 <div className="header">
                     {this.state.links.map(i => (
                         <Link
