@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
+import Link from 'next/link'
 
 const StyledNav = styled.ul`
     text-align: center;
@@ -47,7 +48,9 @@ const Nav = ({ handleMouseEnter, handleMouseLeave, homepage: { content } }) => {
                         handleMouseLeave ? () => handleMouseLeave() : null
                     }
                 >
-                    {item.title}
+                    <Link href="/category?category=hello" as="/hello">
+                        <a>{item.title}</a>
+                    </Link>
                 </li>
             ))}
         </StyledNav>
