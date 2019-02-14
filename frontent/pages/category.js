@@ -33,7 +33,15 @@ class Category extends Component {
 
     state = {
         active: 0,
+        subCategoryActive: '',
         listView: false,
+    }
+
+    componentDidMount() {
+        this.setState({
+            subCategoryActive: this.props.categories.items[this.props.category]
+                .artworks[0].subcategory,
+        })
     }
 
     settings = () => {
@@ -45,7 +53,13 @@ class Category extends Component {
             slidesToShow: 1,
             slidesToScroll: 1,
             fade: true,
-            beforeChange: (current, next) => this.setState({ active: next }),
+            beforeChange: (current, next) =>
+                this.setState({
+                    active: next,
+                    subCategoryActive: this.props.categories.items[
+                        this.props.category
+                    ].artworks[next].subcategory,
+                }),
         }
     }
 

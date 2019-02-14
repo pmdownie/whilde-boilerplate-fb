@@ -4,13 +4,14 @@ import { api } from '../constants'
 const reduceArtworks = subcategories =>
     subcategories.reduce((arr, subcategory) => {
         let artworks = []
-        subcategory.fields.artworks.map(i =>
-            artworks.push({
+        subcategory.fields.artworks.map(i => {
+            return artworks.push({
                 ...i.fields,
                 largeImage: i.fields.largeImage.fields.file,
                 smallImage: i.fields.smallImage.fields.file,
+                subcategory: subcategory.fields.title,
             })
-        )
+        })
         return [...arr, ...artworks]
     }, [])
 
