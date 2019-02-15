@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 const StyledFooter = styled.footer`
     position: relative;
@@ -39,6 +39,12 @@ const StyledFooter = styled.footer`
     .grey {
         color: ${({ theme }) => theme.lightgrey};
     }
+
+    ${({ listView }) =>
+        listView &&
+        css`
+            display: none;
+        `}
 `
 
 export default StyledFooter

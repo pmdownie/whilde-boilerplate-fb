@@ -44,6 +44,13 @@ class Category extends Component {
         })
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        const { listView, active } = this.state
+        if (!listView && listView !== prevState.listView) {
+            this.slider.slickGoTo(active)
+        }
+    }
+
     settings = () => {
         return {
             dots: false,
@@ -63,6 +70,9 @@ class Category extends Component {
         }
     }
 
+    toggleListView = () =>
+        this.setState(({ listView }) => ({ listView: !listView }))
+
     next = () => this.slider.slickNext()
 
     prev = () => this.slider.slickPrev()
@@ -74,7 +84,23 @@ class Category extends Component {
         )
 
         this.slider.slickGoTo(found)
-        this.setState({ active: found, subCategoryActive: subcategory })
+        this.setState({
+            active: found,
+            subCategoryActive: subcategory,
+        })
+    }
+
+    handleListViewItemClick = (title, subcategory) => {
+        const category = this.props.categories.items[this.props.category]
+        const active = category.artworks.findIndex(
+            artwork => artwork.title === title
+        )
+
+        this.setState({
+            active,
+            subCategoryActive: subcategory,
+            listView: false,
+        })
     }
 
     render() {
@@ -82,7 +108,7 @@ class Category extends Component {
         const { active } = this.state
         return (
             <Container>
-                <StyledHeader>
+                <StyledHeader {...this.state}>
                     <div className="bold">{category.title}</div>
                     <div
                         className="right hideMobile cursor"
@@ -100,8 +126,10 @@ class Category extends Component {
                     next={this.next}
                     prev={this.prev}
                     handleSubcategoryClick={this.handleSubcategoryClick}
+                    toggleListView={this.toggleListView}
+                    handleListViewItemClick={this.handleListViewItemClick}
                 />
-                <StyledFooter>
+                <StyledFooter {...this.state}>
                     <div>
                         {active + 1} / {category.artworks.length}
                     </div>
@@ -111,7 +139,12 @@ class Category extends Component {
                     <div className="mobile grey right">
                         {category.artworks[active].dimensions}
                     </div>
-                    <div className="right hideMobile">View All</div>
+                    <div
+                        className="right hideMobile"
+                        onClick={this.toggleListView}
+                    >
+                        View All
+                    </div>
                 </StyledFooter>
             </Container>
         )

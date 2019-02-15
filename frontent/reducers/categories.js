@@ -1,6 +1,15 @@
 import { combineReducers } from 'redux'
 import { api } from '../constants'
 
+const flattenArtwork = artworks =>
+    artworks.map(i => {
+        return {
+            ...i.fields,
+            largeImage: i.fields.largeImage.fields.file,
+            smallImage: i.fields.smallImage.fields.file,
+        }
+    })
+
 const reduceArtworks = subcategories =>
     subcategories.reduce((arr, subcategory) => {
         let artworks = []
@@ -27,7 +36,11 @@ const items = (items = {}, action) => {
                     ...data,
                     artworks,
                     subCategories: data.subCategories.map(i => {
-                        return { ...i.fields, length: i.fields.artworks.length }
+                        return {
+                            ...i.fields,
+                            length: i.fields.artworks.length,
+                            artworks: flattenArtwork(i.fields.artworks),
+                        }
                     }),
                 },
             }

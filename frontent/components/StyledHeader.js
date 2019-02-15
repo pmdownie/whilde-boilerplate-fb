@@ -49,6 +49,13 @@ const StyledHeader = styled.header`
     .cursor {
         cursor: pointer;
     }
+
+    ${({ listView }) =>
+        listView &&
+        css`
+            position: fixed;
+            width: 100%;
+        `}
 `
 
 export default StyledHeader
