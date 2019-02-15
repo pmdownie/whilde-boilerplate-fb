@@ -46,6 +46,9 @@ const StyledHeader = styled.header`
     .bold {
         font-weight: 700;
     }
+    .cursor {
+        cursor: pointer;
+    }
 `
 
 export default StyledHeader

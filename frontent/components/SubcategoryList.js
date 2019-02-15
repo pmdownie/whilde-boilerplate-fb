@@ -5,6 +5,7 @@ const Container = styled.ul`
     position: absolute;
     top: 0;
     left: 3rem;
+    z-index: ${({ theme }) => theme.zIndexSubcatList};
 
     @media (max-width: ${({ theme }) => theme.mobile}) {
         display: none;
@@ -14,8 +15,16 @@ const ListItem = styled.li`
     color: ${({ theme }) => theme.lightgrey};
     line-height: 1.6;
 
+    &:hover {
+        span:after {
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+    }
+
     span {
         position: relative;
+        cursor: pointer;
     }
 
     span:after {
@@ -38,13 +47,18 @@ const ListItem = styled.li`
     }
 `
 
-const SubcategoryList = ({ category, subCategoryActive }) => {
+const SubcategoryList = ({
+    category,
+    subCategoryActive,
+    handleSubcategoryClick,
+}) => {
     return (
         <Container>
             {category.subCategories.map((item, i) => (
                 <ListItem
                     key={item.title}
                     active={subCategoryActive === item.title}
+                    onClick={() => handleSubcategoryClick(item.title)}
                 >
                     <span>{item.title}</span>
                 </ListItem>

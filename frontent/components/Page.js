@@ -1,9 +1,23 @@
 import React from 'react'
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
+import Router from 'next/router'
+import NProgress from 'nprogress'
 import Meta from './Meta'
 import DetectDevice from './DetectDevice'
 import Info from '../components/Info'
 import Menu from '../components/Menu'
+
+Router.onRouteChangeStart = () => {
+    NProgress.start()
+}
+
+Router.onRouteChangeComplete = () => {
+    NProgress.done()
+}
+
+Router.onRouteChangeError = () => {
+    NProgress.done()
+}
 
 const theme = {
     black: '#000000',
@@ -23,6 +37,7 @@ const theme = {
     easing: 'cubic-bezier(0.4, 0.0, 0.2, 1)',
 
     // z-index
+    zIndexSubcatList: '5',
     zIndexMenu: '10',
     zIndexInfo: '20',
     zIndexHeader: '30',

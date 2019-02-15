@@ -67,6 +67,16 @@ class Category extends Component {
 
     prev = () => this.slider.slickPrev()
 
+    handleSubcategoryClick = subcategory => {
+        const category = this.props.categories.items[this.props.category]
+        const found = category.artworks.findIndex(
+            artwork => artwork.subcategory === subcategory
+        )
+
+        this.slider.slickGoTo(found)
+        this.setState({ active: found, subCategoryActive: subcategory })
+    }
+
     render() {
         const category = this.props.categories.items[this.props.category]
         const { active } = this.state
@@ -75,7 +85,7 @@ class Category extends Component {
                 <StyledHeader>
                     <div className="bold">{category.title}</div>
                     <div
-                        className="right hideMobile"
+                        className="right hideMobile cursor"
                         onClick={() => this.props.router.push('/')}
                     >
                         Close
@@ -89,6 +99,7 @@ class Category extends Component {
                     settings={this.settings}
                     next={this.next}
                     prev={this.prev}
+                    handleSubcategoryClick={this.handleSubcategoryClick}
                 />
                 <StyledFooter>
                     <div>

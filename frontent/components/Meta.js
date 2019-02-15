@@ -11,6 +11,7 @@ const Meta = () => (
         <link rel="shortcut icon" href="/static/favicon.ico" />
         <link rel="shortcut icon" href="/static/favicon-16x16.png" />
         <link rel="shortcut icon" href="/static/favicon-32x32.png" />
+        <link rel="stylesheet" type="text/css" href="/static/css/nprogress.css" />
         <link
             rel="stylesheet"
             type="text/css"
