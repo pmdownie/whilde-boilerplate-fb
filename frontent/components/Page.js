@@ -23,7 +23,7 @@ const theme = {
     black: '#000000',
     white: '#ffffff',
     grey: '#4c4c4c',
-    lightgrey: '#BFBFBF',
+    lightgrey: '#ababab',
     gutters: '30px',
 
     // media queries
@@ -80,13 +80,17 @@ const GlobalStyle = createGlobalStyle`
     body {
         padding: 0;
         margin: 0;
-        font-size: 1.5rem;
+        font-size: 1.8rem;
         line-height: 2;
         letter-spacing: -0.01rem;
         font-family: 'GT America';
         font-weight: 200;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+
+        @media (max-width: ${theme.tablet}) {
+            font-size: 1.5rem;
+        }
 
         @media (max-width: ${theme.mobile}) {
             font-size: 1.3rem;

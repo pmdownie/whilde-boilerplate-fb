@@ -12,6 +12,12 @@ const StyledFooter = styled.footer`
         justify-self: end;
     }
 
+    .small {
+        @media (min-width: ${({ theme }) => theme.desktop}) {
+            font-size: 1.6rem;
+        }
+    }
+
     .center {
         position: absolute;
         top: 50%;
@@ -41,6 +47,18 @@ const StyledFooter = styled.footer`
     }
     .cursor {
         cursor: pointer;
+    }
+
+    .hoverGrey {
+        transition: color 0.3s ease;
+        &:hover {
+            color: ${({ theme }) => theme.lightgrey};
+            ${({ infoOpen }) =>
+                infoOpen &&
+                css`
+                    color: ${({ theme }) => theme.black};
+                `}
+        }
     }
 
     ${({ listView }) =>

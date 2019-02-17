@@ -17,12 +17,12 @@ const Container = styled.div`
     background-color: ${({ theme }) => theme.lightgrey};
 
     .header {
-        padding-top: 12rem;
+        padding-top: 13vh;
         display: grid;
         grid-template-columns: repeat(2, min-content);
         column-gap: 1rem;
 
-        @media (max-width: ${({ theme }) => theme.mobile}) {
+        @media (max-width: ${({ theme }) => theme.tablet}) {
             padding-top: 8rem;
         }
     }
@@ -44,12 +44,16 @@ const Link = styled.span`
             color: ${({ theme }) => theme.white};
             font-weight: 700;
         `}
+
+    &:hover {
+        color: ${({ theme }) => theme.white};
+    }
 `
 
 const Copy = styled.div`
     position: absolute;
-    width: 38rem;
-    line-height: 1.5;
+    width: 45rem;
+    line-height: 1.55;
     opacity: 0;
     z-index: 1;
     transition: opacity 0.3s ease;
@@ -61,8 +65,21 @@ const Copy = styled.div`
             z-index: 5;
         `}
 
+    @media (min-width: ${({ theme }) => theme.desktop}) {
+        font-size: 1.65rem;
+    }
+
     @media (max-width: ${({ theme }) => theme.mobile}) {
         width: 100%;
+    }
+
+    a {
+        color: ${({ theme }) => theme.white};
+        transition: color 0.3s ease;
+
+        &:hover {
+            color: ${({ theme }) => theme.black};
+        }
     }
 `
 

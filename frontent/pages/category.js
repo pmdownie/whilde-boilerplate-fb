@@ -56,7 +56,7 @@ class Category extends Component {
             dots: false,
             arrows: false,
             infinite: true,
-            speed: 500,
+            speed: 250,
             slidesToShow: 1,
             slidesToScroll: 1,
             fade: true,
@@ -111,7 +111,7 @@ class Category extends Component {
                 <StyledHeader {...this.state}>
                     <div className="bold">{category.title}</div>
                     <div
-                        className="right hideMobile cursor"
+                        className="right hideMobile cursor hoverGrey"
                         onClick={() => this.props.router.push('/')}
                     >
                         Close
@@ -140,7 +140,7 @@ class Category extends Component {
                         {category.artworks[active].dimensions}
                     </div>
                     <div
-                        className="right hideMobile cursor"
+                        className="right hideMobile cursor hoverGrey"
                         onClick={this.toggleListView}
                     >
                         View All

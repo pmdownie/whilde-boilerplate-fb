@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import { fetchContent } from '../actions/content'
 import { toggleInfo } from '../actions/info'
 import { connect } from 'react-redux'
@@ -41,9 +42,13 @@ class Home extends React.Component {
         return (
             <Container {...this.state}>
                 <StyledHeader infoOpen={this.props.info.open}>
-                    <Logo white={this.props.info.open} />
+                    <Link href="/">
+                        <a className="cursor">
+                            <Logo white={this.props.info.open} />
+                        </a>
+                    </Link>
                     <span
-                        className="info right"
+                        className="info right hoverGrey cursor"
                         onClick={this.props.toggleInfo}
                     >
                         {this.props.info.open ? 'Close' : 'Info'}
@@ -52,7 +57,7 @@ class Home extends React.Component {
                 </StyledHeader>
                 <Homepage />
                 <StyledFooter>
-                    <span className="center">
+                    <span className="center small">
                         {this.props.homepage.content.footer}
                     </span>
                 </StyledFooter>

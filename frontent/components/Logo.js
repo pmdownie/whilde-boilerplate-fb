@@ -7,7 +7,7 @@ const Container = styled.div`
     align-items: center;
 
     svg {
-        width: 35px;
+        width: 40px;
 
         @media (max-width: ${({ theme }) => theme.mobile}) {
             width: 33px;
@@ -15,8 +15,8 @@ const Container = styled.div`
     }
 
     .line {
-        width: 0.5px;
-        height: 3rem;
+        width: 1px;
+        height: 3.25rem;
         margin: 0 1.2rem;
         background: ${({ theme }) => theme.black};
         transition: background-color 0.3s ease;
