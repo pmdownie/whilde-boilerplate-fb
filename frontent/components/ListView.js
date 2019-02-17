@@ -27,6 +27,10 @@ const Inner = styled.div`
             width: 100%;
         }
     }
+
+    .image {
+        cursor: pointer;
+    }
 `
 
 const ListViewBlock = category => (

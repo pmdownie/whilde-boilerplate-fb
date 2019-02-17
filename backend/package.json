@@ -1,5 +1,5 @@
 {
-  "name": "rest-api-boilerplate",
+  "name": "nadine-dewart-backend",
   "version": "1.0.0",
   "description": "Boilerplate for REST Api's with express, mongoose and mondodb",
   "main": "index.js",
@@ -12,12 +12,15 @@
   ],
   "scripts": {
     "dev": "NODE_ENV=development nodemon --exec babel-node index.js",
+    "build": "babel . -d build  --ignore 'node_modules'",
+    "start": "NODE_ENV=production node build/index.js",
+    "clean": "rimraf build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Patrick Downie (patrick@whildestudios.com)",
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.2.2",
+    "@babel/core": "^7.3.3",
     "@babel/node": "^7.2.2",
     "@babel/polyfill": "^7.2.5",
     "@babel/preset-env": "^7.2.3",
@@ -28,6 +31,7 @@
     "nodemon": "^1.18.9"
   },
   "dependencies": {
+    "@babel/cli": "^7.2.3",
     "body-parser": "^1.18.3",
     "chalk": "^2.4.2",
     "compression": "^1.7.3",
@@ -36,10 +40,12 @@
     "dotenv": "^6.2.0",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
+    "memory-cache": "^0.2.0",
     "moment": "^2.23.0",
     "mongoose": "^5.4.5",
     "mongoose-string-query": "^0.2.5",
     "mongoose-timestamp": "^0.6.0",
+    "rimraf": "^2.6.3",
     "winston": "^3.1.0"
   }
 }

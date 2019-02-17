@@ -140,7 +140,7 @@ class Category extends Component {
                         {category.artworks[active].dimensions}
                     </div>
                     <div
-                        className="right hideMobile"
+                        className="right hideMobile cursor"
                         onClick={this.toggleListView}
                     >
                         View All

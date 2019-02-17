@@ -1,5 +1,8 @@
 {
     "version": 2,
     "name": "nadine-dewart",
-    "builds": [{ "src": "next.config.js", "use": "@now/next" }]
+    "builds": [{ "src": "next.config.js", "use": "@now/next" }],
+    "env": {
+        "ENDPOINT": "https://nd-api.whilde.studio"
+    }
 }

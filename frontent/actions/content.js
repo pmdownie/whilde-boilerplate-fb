@@ -25,7 +25,7 @@ export const fetchContent = (type, id) => async dispatch => {
     dispatch(loadingContent(type))
     try {
         const data = await axios.get(
-            `http://localhost:2424/fetch${routes[type]}${id ? `/${id}` : ``}`
+            `${process.env.ENDPOINT}/fetch${routes[type]}${id ? `/${id}` : ``}`
         )
         dispatch(loadingContentSuccess(type, data.data))
         return data.data

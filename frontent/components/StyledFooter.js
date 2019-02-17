@@ -39,6 +39,9 @@ const StyledFooter = styled.footer`
     .grey {
         color: ${({ theme }) => theme.lightgrey};
     }
+    .cursor {
+        cursor: pointer;
+    }
 
     ${({ listView }) =>
         listView &&
