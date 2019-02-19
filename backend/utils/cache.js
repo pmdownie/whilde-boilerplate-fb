@@ -17,4 +17,9 @@ const cache = duration => (req, res, next) => {
     }
 };
 
+export const clear = (req, res) => {
+    mcache.clear();
+    res.send('Cache cleared!!!')
+}
+
 export default cache;
