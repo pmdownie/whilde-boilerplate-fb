@@ -14,6 +14,15 @@ const Container = styled.ul`
 const ListItem = styled.li`
     color: ${({ theme }) => theme.lightgrey};
     line-height: 1.6;
+    transition: color 0.3s ease;
+
+    ${({ active }) =>
+        active &&
+        css`
+            transition: color 0.25s ease;
+            color: ${({ theme }) => theme.black};
+            font-weight: bold;
+        `}
 
     &:hover {
         span:after {
@@ -37,13 +46,6 @@ const ListItem = styled.li`
         background: ${({ theme }) => theme.lightgrey};
         opacity: 0;
         transition: opacity 0.25s ease;
-
-        ${({ active }) =>
-            active &&
-            css`
-                opacity: 1;
-                transition: opacity 0.3s ease;
-            `}
     }
 `
 

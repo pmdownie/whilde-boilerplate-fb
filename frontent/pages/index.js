@@ -42,11 +42,14 @@ class Home extends React.Component {
         return (
             <Container {...this.state}>
                 <StyledHeader infoOpen={this.props.info.open}>
-                    <Link href="/">
-                        <a className="cursor">
-                            <Logo white={this.props.info.open} />
-                        </a>
-                    </Link>
+                    <div
+                        style={{ cursor: 'pointer' }}
+                        onClick={
+                            this.props.info.open ? this.props.toggleInfo : null
+                        }
+                    >
+                        <Logo white={this.props.info.open} />
+                    </div>
                     <span
                         className="info right hoverGrey cursor"
                         onClick={this.props.toggleInfo}

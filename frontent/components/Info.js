@@ -42,7 +42,7 @@ const Link = styled.span`
         active &&
         css`
             color: ${({ theme }) => theme.white};
-            font-weight: 700;
+            text-decoration: underline;
         `}
 
     &:hover {
@@ -52,7 +52,7 @@ const Link = styled.span`
 
 const Copy = styled.div`
     position: absolute;
-    width: 45rem;
+    width: 55rem;
     line-height: 1.55;
     opacity: 0;
     z-index: 1;
@@ -66,7 +66,7 @@ const Copy = styled.div`
         `}
 
     @media (min-width: ${({ theme }) => theme.desktop}) {
-        font-size: 1.65rem;
+        font-size: 1.8rem;
     }
 
     @media (max-width: ${({ theme }) => theme.mobile}) {

@@ -22,13 +22,19 @@ const Slide = styled.div`
         css`
             opacity: 1;
         `}
+
+    ${({ i }) =>
+        i === 0 &&
+        css`
+            background-position: center top;
+        `}
 `
 
 const Gallery = ({ gallery, active }) => {
     return (
         <Container>
             {gallery.map((image, i) => (
-                <Slide key={i} image={image} active={i === active} />
+                <Slide key={i} i={i} image={image} active={i === active} />
             ))}
         </Container>
     )

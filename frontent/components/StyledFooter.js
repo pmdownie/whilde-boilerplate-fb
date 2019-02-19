@@ -14,7 +14,7 @@ const StyledFooter = styled.footer`
 
     .small {
         @media (min-width: ${({ theme }) => theme.desktop}) {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
         }
     }
 

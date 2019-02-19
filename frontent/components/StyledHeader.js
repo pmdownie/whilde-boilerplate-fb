@@ -69,6 +69,12 @@ const StyledHeader = styled.header`
         }
     }
 
+    .large {
+        @media (min-width: ${({ theme }) => theme.desktop}) {
+            font-size: 2.2rem;
+        }
+    }
+
     ${({ listView }) =>
         listView &&
         css`

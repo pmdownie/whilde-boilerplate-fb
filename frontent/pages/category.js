@@ -56,10 +56,9 @@ class Category extends Component {
             dots: false,
             arrows: false,
             infinite: true,
-            speed: 250,
+            speed: 500,
             slidesToShow: 1,
             slidesToScroll: 1,
-            fade: true,
             beforeChange: (current, next) =>
                 this.setState({
                     active: next,
@@ -109,7 +108,7 @@ class Category extends Component {
         return (
             <Container>
                 <StyledHeader {...this.state}>
-                    <div className="bold">{category.title}</div>
+                    <div className="bold large">{category.title}</div>
                     <div
                         className="right hideMobile cursor hoverGrey"
                         onClick={() => this.props.router.push('/')}

@@ -22,6 +22,7 @@ const StyledNav = styled.ul`
     li {
         font-size: 6rem;
         line-height: 1.55;
+        letter-spacing: -0.1rem;
         cursor: pointer;
 
         @media (min-width: ${({ theme }) => theme.desktop}) {

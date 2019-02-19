@@ -80,7 +80,7 @@ const GlobalStyle = createGlobalStyle`
     body {
         padding: 0;
         margin: 0;
-        font-size: 1.8rem;
+        font-size: 2rem;
         line-height: 2;
         letter-spacing: -0.01rem;
         font-family: 'GT America';

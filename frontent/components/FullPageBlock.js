@@ -7,7 +7,7 @@ const FullPageBlock = styled.div`
     width: 100vw;
     z-index: ${({ theme, zIndex }) => theme[zIndex]};
     transform: translateX(110vw);
-    transition: transform 0.5s ${({ theme }) => theme.easing};
+    transition: transform 0.85s ${({ theme }) => theme.easing};
 
     @media (max-width: ${({ theme }) => theme.mobile}) {
         height: 100%;
@@ -18,7 +18,7 @@ const FullPageBlock = styled.div`
         open &&
         css`
             transform: translateX(0);
-            transition: transform 0.45s ${({ theme }) => theme.easing};
+            transition: transform 1s ${({ theme }) => theme.easing};
 
             @media (max-width: ${({ theme }) => theme.mobile}) {
                 transition: transform 0.25s ${({ theme }) => theme.easing};
