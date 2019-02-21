@@ -12,40 +12,54 @@ const Container = styled.ul`
     }
 `
 const ListItem = styled.li`
+    position: relative;
     color: ${({ theme }) => theme.lightgrey};
     line-height: 1.6;
-    transition: color 0.3s ease;
-
-    ${({ active }) =>
-        active &&
-        css`
-            transition: color 0.25s ease;
-            color: ${({ theme }) => theme.black};
-            font-weight: bold;
-        `}
 
     &:hover {
-        span:after {
+        span {
+            transform: translateX(2.8rem);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        &:before {
             opacity: 1;
-            transition: opacity 0.3s ease;
         }
     }
 
     span {
         position: relative;
         cursor: pointer;
+        display: inline-block;
+        transition: transform 0.25s ease-in-out;
+
+        ${({ active }) =>
+            active &&
+            css`
+                transform: translateX(2.8rem);
+                transition: transform 0.2s ease-in-out;
+            `}
     }
 
-    span:after {
+    &:before {
         content: '';
         position: absolute;
-        width: 100%;
-        height: 1px;
+        width: 2rem;
         left: 0;
-        bottom: 0;
-        background: ${({ theme }) => theme.lightgrey};
+        top: 0;
+        height: 100%;
+        background-image: url(${({ arrow }) => arrow});
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100% auto;
         opacity: 0;
-        transition: opacity 0.25s ease;
+        transition: opacity 0.3s ease;
+
+        ${({ active }) =>
+            active &&
+            css`
+                opacity: 1;
+            `}
     }
 `
 
@@ -61,6 +75,7 @@ const SubcategoryList = ({
                     key={item.title}
                     active={subCategoryActive === item.title}
                     onClick={() => handleSubcategoryClick(item.title)}
+                    arrow={'/static/images/grey-arrow.png'}
                 >
                     <span>{item.title}</span>
                 </ListItem>

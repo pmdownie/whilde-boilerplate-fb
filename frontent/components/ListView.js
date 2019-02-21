@@ -6,6 +6,12 @@ const Container = styled.div`
     max-width: 920px;
     margin: 6rem auto 0;
     padding: 0 3rem;
+
+    @media (min-width: ${({ theme }) => theme.desktoplarge}) {
+        max-width: 100%;
+        width: 60%;
+        padding: 0;
+    }
 `
 const Inner = styled.div`
     .title {

@@ -39,8 +39,10 @@ class Category extends Component {
 
     componentDidMount() {
         this.setState({
-            subCategoryActive: this.props.categories.items[this.props.category]
-                .artworks[0].subcategory,
+            subCategoryActive: this.props.categories.loaded
+                ? this.props.categories.items[this.props.category].artworks[0]
+                      .subcategory
+                : '',
         })
     }
 
@@ -108,7 +110,7 @@ class Category extends Component {
         return (
             <Container>
                 <StyledHeader {...this.state}>
-                    <div className="bold large">{category.title}</div>
+                    <div>{category.title}</div>
                     <div
                         className="right hideMobile cursor hoverGrey"
                         onClick={() => this.props.router.push('/')}

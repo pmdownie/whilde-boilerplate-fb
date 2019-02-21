@@ -27,6 +27,7 @@ const theme = {
     gutters: '30px',
 
     // media queries
+    desktopxlarge: '1550px',
     desktoplarge: '1350px',
     desktop: '1022px',
     tablet: '1021px',

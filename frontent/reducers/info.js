@@ -1,14 +1,19 @@
 import { combineReducers } from 'redux'
 import { api } from '../constants'
 
-const open = (open = false, action) => {
+const open = (open = true, action) => {
     return action.type === api.INFO_DRAWER_TOGGLE ? action.open : open
 }
 
 const content = (content = {}, action) => {
     switch (action.type) {
         case api.INFO_CONTENT_FETCH_SUCCESS:
-            return action.data.items[0].fields
+            const data = action.data.items[0].fields
+            return {
+                ...data,
+                image: data.image.fields.file,
+                imageMobile: data.imageMobile.fields.file,
+            }
         default:
             return content
     }
