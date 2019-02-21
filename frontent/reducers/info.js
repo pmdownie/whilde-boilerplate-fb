@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 import { api } from '../constants'
 
-const open = (open = true, action) => {
+const open = (open = false, action) => {
     return action.type === api.INFO_DRAWER_TOGGLE ? action.open : open
 }
 
