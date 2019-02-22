@@ -22,7 +22,7 @@ Router.onRouteChangeError = () => {
 const theme = {
     black: '#000000',
     white: '#ffffff',
-    grey: '#4c4c4c',
+    grey: '#6f6f6f',
     lightgrey: '#ababab',
     gutters: '30px',
 

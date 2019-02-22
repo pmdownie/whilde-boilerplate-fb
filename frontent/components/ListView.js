@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const Container = styled.div`
     position: relative;
     max-width: 920px;
-    margin: 6rem auto 0;
+    margin: 6rem auto;
     padding: 0 3rem;
 
     @media (min-width: ${({ theme }) => theme.desktoplarge}) {
@@ -20,7 +20,6 @@ const Inner = styled.div`
         justify-content: center;
         height: 6rem;
         margin-bottom: 1rem;
-        color: ${({ theme }) => theme.lightgrey};
     }
 
     .grid {

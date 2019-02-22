@@ -61,6 +61,18 @@ const StyledFooter = styled.footer`
         }
     }
 
+    .hoverDarkGrey {
+        transition: color 0.3s ease;
+        &:hover {
+            color: ${({ theme }) => theme.grey};
+            ${({ infoOpen }) =>
+                infoOpen &&
+                css`
+                    color: ${({ theme }) => theme.black};
+                `}
+        }
+    }
+
     ${({ listView }) =>
         listView &&
         css`
