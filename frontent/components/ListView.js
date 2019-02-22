@@ -6,6 +6,12 @@ const Container = styled.div`
     max-width: 920px;
     margin: 6rem auto 0;
     padding: 0 3rem;
+
+    @media (min-width: ${({ theme }) => theme.desktoplarge}) {
+        max-width: 100%;
+        width: 60%;
+        padding: 0;
+    }
 `
 const Inner = styled.div`
     .title {
@@ -13,6 +19,7 @@ const Inner = styled.div`
         align-items: center;
         justify-content: center;
         height: 6rem;
+        margin-bottom: 1rem;
         color: ${({ theme }) => theme.lightgrey};
     }
 
@@ -25,11 +32,17 @@ const Inner = styled.div`
 
         img {
             width: 100%;
+            display: block;
         }
     }
 
     .image {
         cursor: pointer;
+        transition: box-shadow 0.3s ease;
+
+        &:hover {
+            box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.05);
+        }
     }
 `
 

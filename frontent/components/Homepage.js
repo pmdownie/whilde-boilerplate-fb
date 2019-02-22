@@ -28,7 +28,7 @@ const Container = styled.div`
         justify-self: stretch;
 
         @media (max-width: ${({ theme }) => theme.mobile}) {
-            height: 90%;
+            height: 98%;
             align-self: center;
         }
     }

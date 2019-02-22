@@ -2,6 +2,12 @@
     "version": 2,
     "name": "nadine-dewart",
     "builds": [{ "src": "next.config.js", "use": "@now/next" }],
+    "routes": [
+        {
+            "src": "/(?<category>[^/]+)$",
+            "dest": "/category?category=$category"
+        }
+    ],
     "env": {
         "ENDPOINT": "https://nd-api.whilde.studio"
     }

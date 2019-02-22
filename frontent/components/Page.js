@@ -23,10 +23,11 @@ const theme = {
     black: '#000000',
     white: '#ffffff',
     grey: '#4c4c4c',
-    lightgrey: '#BFBFBF',
+    lightgrey: '#ababab',
     gutters: '30px',
 
     // media queries
+    desktopxlarge: '1550px',
     desktoplarge: '1350px',
     desktop: '1022px',
     tablet: '1021px',
@@ -64,7 +65,6 @@ const GlobalStyle = createGlobalStyle`
     body,
     #__next {
         height: 100%;
-    overflow-x: hidden;
     }
 
     html {
@@ -80,13 +80,18 @@ const GlobalStyle = createGlobalStyle`
     body {
         padding: 0;
         margin: 0;
-        font-size: 1.5rem;
+        font-size: 2rem;
         line-height: 2;
+        overflow-x: hidden;
         letter-spacing: -0.01rem;
         font-family: 'GT America';
         font-weight: 200;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+
+        @media (max-width: ${theme.tablet}) {
+            font-size: 1.5rem;
+        }
 
         @media (max-width: ${theme.mobile}) {
             font-size: 1.3rem;
@@ -114,22 +119,23 @@ const GlobalStyle = createGlobalStyle`
 
 const Inner = styled.div`
     height: 100%;
+    width: 100vw;
+    max-width: 100%;
+    overflow-x: hidden;
 `
 
-const Page = ({ children }) => {
-    return (
-        <ThemeProvider theme={theme}>
-            <DetectDevice>
-                <Inner>
-                    <Meta />
-                    <GlobalStyle />
-                    <Info />
-                    <Menu />
-                    {children}
-                </Inner>
-            </DetectDevice>
-        </ThemeProvider>
-    )
-}
+const Page = ({ children }) => (
+    <ThemeProvider theme={theme}>
+        <DetectDevice>
+            <Inner>
+                <Meta />
+                <GlobalStyle />
+                <Info />
+                <Menu />
+                {children}
+            </Inner>
+        </DetectDevice>
+    </ThemeProvider>
+)
 
 export default Page

@@ -39,8 +39,10 @@ class Category extends Component {
 
     componentDidMount() {
         this.setState({
-            subCategoryActive: this.props.categories.items[this.props.category]
-                .artworks[0].subcategory,
+            subCategoryActive: this.props.categories.loaded
+                ? this.props.categories.items[this.props.category].artworks[0]
+                      .subcategory
+                : '',
         })
     }
 
@@ -59,7 +61,6 @@ class Category extends Component {
             speed: 500,
             slidesToShow: 1,
             slidesToScroll: 1,
-            fade: true,
             beforeChange: (current, next) =>
                 this.setState({
                     active: next,
@@ -108,10 +109,10 @@ class Category extends Component {
         const { active } = this.state
         return (
             <Container>
-                <StyledHeader {...this.state}>
-                    <div className="bold">{category.title}</div>
+                <StyledHeader {...this.state} infoOpen={this.props.info.open}>
+                    <div>{this.props.info.open ? 'Info' : category.title}</div>
                     <div
-                        className="right hideMobile cursor"
+                        className="right hideMobile cursor hoverGrey"
                         onClick={() => this.props.router.push('/')}
                     >
                         Close
@@ -140,7 +141,7 @@ class Category extends Component {
                         {category.artworks[active].dimensions}
                     </div>
                     <div
-                        className="right hideMobile cursor"
+                        className="right hideMobile cursor hoverGrey"
                         onClick={this.toggleListView}
                     >
                         View All

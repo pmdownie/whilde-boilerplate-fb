@@ -8,7 +8,12 @@ const open = (open = false, action) => {
 const content = (content = {}, action) => {
     switch (action.type) {
         case api.INFO_CONTENT_FETCH_SUCCESS:
-            return action.data.items[0].fields
+            const data = action.data.items[0].fields
+            return {
+                ...data,
+                image: data.image.fields.file,
+                imageMobile: data.imageMobile.fields.file,
+            }
         default:
             return content
     }

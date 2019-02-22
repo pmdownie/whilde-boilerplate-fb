@@ -10,10 +10,17 @@ const StyledHeader = styled.header`
     z-index: ${({ theme }) => theme.zIndexHeader};
     transition: color 0.3s ease;
 
+    a {
+        transition: color 0.3s ease;
+    }
+
     ${({ infoOpen }) =>
         infoOpen &&
         css`
             color: ${({ theme }) => theme.white};
+            a {
+                color: ${({ theme }) => theme.white};
+            }
         `}
 
     @media (max-width: ${({ theme }) => theme.mobile}) {
@@ -48,6 +55,24 @@ const StyledHeader = styled.header`
     }
     .cursor {
         cursor: pointer;
+    }
+
+    .hoverGrey {
+        transition: color 0.3s ease;
+        &:hover {
+            color: ${({ theme }) => theme.lightgrey};
+            ${({ infoOpen }) =>
+                infoOpen &&
+                css`
+                    color: ${({ theme }) => theme.black};
+                `}
+        }
+    }
+
+    .large {
+        @media (min-width: ${({ theme }) => theme.desktop}) {
+            font-size: 2.2rem;
+        }
     }
 
     ${({ listView }) =>

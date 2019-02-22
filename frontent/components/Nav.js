@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { toggleMenu } from '../actions/menu'
 import styled from 'styled-components'
 import Link from 'next/link'
 
@@ -20,8 +21,9 @@ const StyledNav = styled.ul`
     }
 
     li {
-        font-size: 4.8rem;
-        line-height: 1.65;
+        font-size: 6rem;
+        line-height: 1.55;
+        letter-spacing: -0.1rem;
         cursor: pointer;
 
         @media (min-width: ${({ theme }) => theme.desktop}) {
@@ -42,7 +44,13 @@ const StyledNav = styled.ul`
     }
 `
 
-const Nav = ({ handleMouseEnter, handleMouseLeave, homepage: { content } }) => {
+const Nav = ({
+    handleMouseEnter,
+    handleMouseLeave,
+    homepage: { content },
+    toggleMenu,
+    device: { mobile },
+}) => {
     return (
         <StyledNav>
             {content.categories.map((item, i) => (
@@ -60,7 +68,7 @@ const Nav = ({ handleMouseEnter, handleMouseLeave, homepage: { content } }) => {
                         href={`/category?category=${item.id}`}
                         as={`/${item.id}`}
                     >
-                        <a>{item.title}</a>
+                        <a onClick={mobile ? toggleMenu : null}>{item.title}</a>
                     </Link>
                 </li>
             ))}
@@ -68,4 +76,7 @@ const Nav = ({ handleMouseEnter, handleMouseLeave, homepage: { content } }) => {
     )
 }
 
-export default connect(({ homepage }) => ({ homepage }))(Nav)
+export default connect(
+    ({ homepage, device }) => ({ homepage, device }),
+    { toggleMenu }
+)(Nav)

@@ -9,17 +9,19 @@ import Logo from '../components/Logo'
 import MenuTrigger from '../components/MenuTrigger'
 import Homepage from '../components/Homepage'
 
-const mapStateToProps = ({ homepage, info }) => ({
+const mapStateToProps = ({ homepage, info, menu, device }) => ({
     homepage,
     info,
+    menu,
+    device,
 })
 
 const Container = styled.div`
     display: grid;
     position: relative;
     grid-template-rows: min-content auto min-content;
-    width: 100vw;
     overflow: hidden;
+    max-width: 100vw;
 
     @media (min-width: ${({ theme }) => theme.mobile}) {
         min-height: 100vh;
@@ -41,9 +43,26 @@ class Home extends React.Component {
         return (
             <Container {...this.state}>
                 <StyledHeader infoOpen={this.props.info.open}>
-                    <Logo white={this.props.info.open} />
+                    <div
+                        style={{ cursor: 'pointer' }}
+                        onClick={
+                            this.props.info.open ? this.props.toggleInfo : null
+                        }
+                    >
+                        {this.props.info.open ? (
+                            this.props.device.mobile ? (
+                                'Info'
+                            ) : (
+                                <Logo white={this.props.info.open} />
+                            )
+                        ) : this.props.menu.open ? (
+                            ''
+                        ) : (
+                            <Logo white={this.props.info.open} />
+                        )}
+                    </div>
                     <span
-                        className="info right"
+                        className="info right hoverGrey cursor"
                         onClick={this.props.toggleInfo}
                     >
                         {this.props.info.open ? 'Close' : 'Info'}
@@ -52,7 +71,7 @@ class Home extends React.Component {
                 </StyledHeader>
                 <Homepage />
                 <StyledFooter>
-                    <span className="center">
+                    <span className="center small">
                         {this.props.homepage.content.footer}
                     </span>
                 </StyledFooter>
