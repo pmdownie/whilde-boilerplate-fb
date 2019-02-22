@@ -65,7 +65,6 @@ const GlobalStyle = createGlobalStyle`
     body,
     #__next {
         height: 100%;
-    overflow-x: hidden;
     }
 
     html {
@@ -83,6 +82,7 @@ const GlobalStyle = createGlobalStyle`
         margin: 0;
         font-size: 2rem;
         line-height: 2;
+        overflow-x: hidden;
         letter-spacing: -0.01rem;
         font-family: 'GT America';
         font-weight: 200;
@@ -119,22 +119,23 @@ const GlobalStyle = createGlobalStyle`
 
 const Inner = styled.div`
     height: 100%;
+    width: 100vw;
+    max-width: 100%;
+    overflow-x: hidden;
 `
 
-const Page = ({ children }) => {
-    return (
-        <ThemeProvider theme={theme}>
-            <DetectDevice>
-                <Inner>
-                    <Meta />
-                    <GlobalStyle />
-                    <Info />
-                    <Menu />
-                    {children}
-                </Inner>
-            </DetectDevice>
-        </ThemeProvider>
-    )
-}
+const Page = ({ children }) => (
+    <ThemeProvider theme={theme}>
+        <DetectDevice>
+            <Inner>
+                <Meta />
+                <GlobalStyle />
+                <Info />
+                <Menu />
+                {children}
+            </Inner>
+        </DetectDevice>
+    </ThemeProvider>
+)
 
 export default Page

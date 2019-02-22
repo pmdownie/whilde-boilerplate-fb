@@ -1,5 +1,4 @@
 import React from 'react'
-import Link from 'next/link'
 import { fetchContent } from '../actions/content'
 import { toggleInfo } from '../actions/info'
 import { connect } from 'react-redux'
@@ -10,17 +9,19 @@ import Logo from '../components/Logo'
 import MenuTrigger from '../components/MenuTrigger'
 import Homepage from '../components/Homepage'
 
-const mapStateToProps = ({ homepage, info }) => ({
+const mapStateToProps = ({ homepage, info, menu, device }) => ({
     homepage,
     info,
+    menu,
+    device,
 })
 
 const Container = styled.div`
     display: grid;
     position: relative;
     grid-template-rows: min-content auto min-content;
-    width: 100vw;
     overflow: hidden;
+    max-width: 100vw;
 
     @media (min-width: ${({ theme }) => theme.mobile}) {
         min-height: 100vh;
@@ -48,7 +49,17 @@ class Home extends React.Component {
                             this.props.info.open ? this.props.toggleInfo : null
                         }
                     >
-                        <Logo white={this.props.info.open} />
+                        {this.props.info.open ? (
+                            this.props.device.mobile ? (
+                                'Info'
+                            ) : (
+                                <Logo white={this.props.info.open} />
+                            )
+                        ) : this.props.menu.open ? (
+                            ''
+                        ) : (
+                            <Logo white={this.props.info.open} />
+                        )}
                     </div>
                     <span
                         className="info right hoverGrey cursor"

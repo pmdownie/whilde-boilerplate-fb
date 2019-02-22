@@ -27,8 +27,21 @@ const Icon = styled.span`
     }
 `
 
+const Background = styled.div`
+    position: absolute;
+    height: 14px;
+    width: 15px;
+    top: -7px;
+    background: rgba(0, 0, 0, 0.05);
+`
+
 const MenuIcon = () => {
-    return <Icon />
+    return (
+        <>
+            <Icon />
+            {/* <Background /> */}
+        </>
+    )
 }
 
 export default MenuIcon

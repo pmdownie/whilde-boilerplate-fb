@@ -11,16 +11,20 @@ const mapStateToProps = ({ info }) => ({ info })
 
 const Container = styled.div`
     position: relative;
-    height: 100%;
+    -webkit-overflow-scrolling: touch;
     padding: 0 3rem;
     padding-top: 10vh;
     color: ${({ theme }) => theme.white};
     background-color: ${({ theme }) => theme.lightgrey};
 
+    @media (min-width: ${({ theme }) => theme.desktop}) {
+        height: 100%;
+    }
+
     @media (max-width: ${({ theme }) => theme.tablet}) {
+        padding: 0 3rem 5rem;
         padding-top: 5rem;
-        max-height: 100%;
-        overflow: scroll;
+        position: absolute;
     }
 
     .header {
@@ -49,18 +53,18 @@ const Container = styled.div`
 
         @media (max-width: ${({ theme }) => theme.tablet}) {
             grid-column: 1 / span 1;
-            grid-row: 2;
         }
     }
 
     .image {
-        width: 100%;
         margin-top: 2rem;
 
         &.desktop {
+            width: 90%;
             grid-column: 6 / span 2;
 
             @media (min-width: ${({ theme }) => theme.desktopxlarge}) {
+                width: 80%;
                 grid-column: 5 / span 2;
             }
 
@@ -72,9 +76,8 @@ const Container = styled.div`
         &.mobile {
             display: none;
             margin: 0 auto;
-            width: 80%;
-            grid-row: 1;
-            margin-bottom: 2rem;
+            width: 100%;
+            margin-top: 3rem;
 
             @media (max-width: ${({ theme }) => theme.tablet}) {
                 display: block;
@@ -85,29 +88,40 @@ const Container = styled.div`
 
 const Link = styled.li`
     position: relative;
-    color: ${({ theme }) => theme.black};
+    color: ${({ theme }) => theme.white};
     line-height: 1.6;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.25s ease;
 
     ${({ active }) =>
         active &&
         css`
-            color: ${({ theme }) => theme.white};
+            color: ${({ theme }) => theme.black};
         `}
 
     span {
         display: inline-block;
+        transition: all 0.3s ease;
 
         ${({ active }) =>
             active &&
             css`
                 transform: translateX(2.8rem);
+                transition: all 0.25s ease;
             `}
     }
 
     &:hover {
-        color: ${({ theme }) => theme.white};
+        @media (min-width: ${({ theme }) => theme.desktop}) {
+            span {
+                transform: translateX(2.8rem);
+                transition: all 0.25s ease;
+            }
+
+            &:before {
+                opacity: 1;
+            }
+        }
     }
 
     &:before {
@@ -117,7 +131,7 @@ const Link = styled.li`
         left: 0;
         top: 0;
         height: 100%;
-        background-image: url(${({ arrow }) => arrow});
+        background-image: url(${({ arrowWhite }) => arrowWhite});
         background-repeat: no-repeat;
         background-position: center;
         background-size: 100% auto;
@@ -128,6 +142,7 @@ const Link = styled.li`
             active &&
             css`
                 opacity: 1;
+                background-image: url(${({ arrow }) => arrow});
             `}
     }
 `
@@ -149,6 +164,12 @@ const Copy = styled.div`
 
     @media (min-width: ${({ theme }) => theme.desktop}) {
         font-size: 1.8rem;
+    }
+
+    @media (max-width: ${({ theme }) => theme.tablet}) {
+        &:last-of-type {
+         position: relative;
+        }
     }
 
     a {
@@ -197,8 +218,19 @@ class Info extends Component {
                         key={i}
                         className={`copy ${i}`}
                         active={this.state.active === i}
-                        dangerouslySetInnerHTML={{ __html: marked(content[i]) }}
-                    />
+                    >
+                        <div
+                            dangerouslySetInnerHTML={{
+                                __html: marked(content[i]),
+                            }}
+                        />
+
+                        <img
+                            src={`https:${this.props.info.content.image.url}`}
+                            alt="Nadine Dewart"
+                            className="image mobile"
+                        />
+                    </Copy>
                 )
             }
         })
@@ -223,7 +255,8 @@ class Info extends Component {
                                         className="link"
                                         onClick={() => this.switchLanguage(i)}
                                         active={this.state.active === i}
-                                        arrow="/static/images/white-arrow.png"
+                                        arrow="/static/images/black-arrow.png"
+                                        arrowWhite="/static/images/white-arrow.png"
                                     >
                                         <span>{toTitleCase(i)}</span>
                                     </Link>
@@ -235,13 +268,6 @@ class Info extends Component {
                             src={`https:${this.props.info.content.image.url}`}
                             alt="Nadine Dewart"
                             className="image desktop"
-                        />
-                        <img
-                            src={`https:${
-                                this.props.info.content.imageMobile.url
-                            }`}
-                            alt="Nadine Dewart"
-                            className="image mobile"
                         />
                     </div>
                 </Container>

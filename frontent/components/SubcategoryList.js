@@ -19,7 +19,7 @@ const ListItem = styled.li`
     &:hover {
         span {
             transform: translateX(2.8rem);
-            transition: transform 0.2s ease-in-out;
+            transition: all 0.2s ease-in-out;
         }
 
         &:before {
@@ -37,7 +37,8 @@ const ListItem = styled.li`
             active &&
             css`
                 transform: translateX(2.8rem);
-                transition: transform 0.2s ease-in-out;
+                transition: all 0.2s ease-in-out;
+                color: ${({ theme }) => theme.black};
             `}
     }
 
@@ -48,7 +49,7 @@ const ListItem = styled.li`
         left: 0;
         top: 0;
         height: 100%;
-        background-image: url(${({ arrow }) => arrow});
+        background-image: url(${({ arrowGrey }) => arrowGrey});
         background-repeat: no-repeat;
         background-position: center;
         background-size: 100% auto;
@@ -59,6 +60,7 @@ const ListItem = styled.li`
             active &&
             css`
                 opacity: 1;
+                background-image: url(${({ arrow }) => arrow});
             `}
     }
 `
@@ -75,7 +77,8 @@ const SubcategoryList = ({
                     key={item.title}
                     active={subCategoryActive === item.title}
                     onClick={() => handleSubcategoryClick(item.title)}
-                    arrow={'/static/images/grey-arrow.png'}
+                    arrow={'/static/images/black-arrow.png'}
+                    arrowGrey={'/static/images/grey-arrow.png'}
                 >
                     <span>{item.title}</span>
                 </ListItem>
