@@ -1,6 +1,6 @@
 {
     "version": 1,
-    "name": "nadine-dewart-backend",
+    "name": "backend",
     "env": {
         "PORT": "@nd-port",
         "SPACE_ID": "@nd-space-id",

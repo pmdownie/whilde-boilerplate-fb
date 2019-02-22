@@ -1,6 +1,6 @@
 {
     "version": 2,
-    "name": "nadine-dewart",
+    "name": "frontend",
     "builds": [{ "src": "next.config.js", "use": "@now/next" }],
     "routes": [
         {
@@ -9,6 +9,6 @@
         }
     ],
     "env": {
-        "ENDPOINT": "https://nd-api.whilde.studio"
+        "ENDPOINT": "https://api.nadinedewart.com"
     }
 }
