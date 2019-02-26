@@ -23,7 +23,21 @@ const Slide = styled.div`
         width: 60%;
 
         @media (max-width: ${({ theme }) => theme.mobile}) {
-            width: 100%;
+            display: none;
+        }
+    }
+
+    .mobile {
+        display: none;
+        width: 100%;
+        height: 60%;
+
+        @media (max-width: ${({ theme }) => theme.mobile}) {
+            display: block;
+            background-image: url(https:${({ imageMobile }) => imageMobile});
+            background-position: center;
+            background-size: 140%;
+            background-repeat: no-repeat;
         }
     }
 `
@@ -47,9 +61,9 @@ const Arrow = styled.div`
             right: -3rem;
         `}
 
-        @media (max-width: ${({ theme }) => theme.mobile}) {
-            display: none;
-        }
+    @media (max-width: ${({ theme }) => theme.mobile}) {
+        display: none;
+    }
 `
 
 const Slider = ({ settings, sliderRef, category, next, prev }) => {
@@ -68,11 +82,12 @@ const Slider = ({ settings, sliderRef, category, next, prev }) => {
             />
             <SliderContainer {...sliderSettings} ref={sliderRef}>
                 {category.artworks.map((image, i) => (
-                    <Slide key={i}>
+                    <Slide key={i} imageMobile={image.smallImage.url}>
                         <img
                             src={`https:${image.largeImage.url}`}
                             alt={image.title}
                         />
+                        <div className="mobile" />
                     </Slide>
                 ))}
             </SliderContainer>

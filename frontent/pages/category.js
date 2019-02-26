@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchContent } from '../actions/content'
 import { toggleInfo } from '../actions/info'
-import { toggleMenu } from '../actions/menu'
+import { toggleMenu, closeMenu } from '../actions/menu'
 import { withRouter } from 'next/router'
 import styled from 'styled-components'
 import StyledHeader from '../components/StyledHeader'
@@ -38,6 +38,7 @@ class Category extends Component {
     }
 
     componentDidMount() {
+        this.props.closeMenu()
         this.setState({
             subCategoryActive: this.props.categories.loaded
                 ? this.props.categories.items[this.props.category].artworks[0]
@@ -110,7 +111,13 @@ class Category extends Component {
         return (
             <Container>
                 <StyledHeader {...this.state} infoOpen={this.props.info.open}>
-                    <div>{this.props.info.open ? 'Info' : category.title}</div>
+                    <div>
+                        {this.props.info.open
+                            ? 'Info'
+                            : this.props.menu.open
+                            ? ''
+                            : category.title}
+                    </div>
                     <div
                         className="right hideMobile cursor hoverGrey"
                         onClick={() => this.props.router.push('/')}
@@ -155,6 +162,6 @@ class Category extends Component {
 export default withRouter(
     connect(
         mapStateToProps,
-        { fetchContent, toggleInfo, toggleMenu }
+        { fetchContent, toggleInfo, toggleMenu, closeMenu }
     )(Category)
 )

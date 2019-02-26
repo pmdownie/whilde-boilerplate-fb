@@ -10,7 +10,7 @@ const Container = styled.div`
         width: 42px;
 
         @media (max-width: ${({ theme }) => theme.mobile}) {
-            width: 33px;
+            width: 38px;
         }
     }
 

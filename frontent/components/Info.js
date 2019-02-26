@@ -60,11 +60,11 @@ const Container = styled.div`
         margin-top: 2rem;
 
         &.desktop {
-            width: 90%;
+            width: 100%;
             grid-column: 6 / span 2;
 
             @media (min-width: ${({ theme }) => theme.desktopxlarge}) {
-                width: 80%;
+                width: 90%;
                 grid-column: 5 / span 2;
             }
 
@@ -163,7 +163,7 @@ const Copy = styled.div`
         `}
 
     @media (min-width: ${({ theme }) => theme.desktop}) {
-        font-size: 1.8rem;
+        font-size: 1.9rem;
     }
 
     @media (max-width: ${({ theme }) => theme.tablet}) {

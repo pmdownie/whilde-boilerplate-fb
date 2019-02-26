@@ -1,6 +1,7 @@
 import React from 'react'
 import { fetchContent } from '../actions/content'
 import { toggleInfo } from '../actions/info'
+import { closeMenu } from '../actions/menu'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import StyledHeader from '../components/StyledHeader'
@@ -37,6 +38,10 @@ class Home extends React.Component {
         await store.dispatch(fetchContent('HOMEPAGE'))
         await store.dispatch(fetchContent('INFO'))
         return { loaded: true }
+    }
+
+    componentDidMount() {
+        this.props.closeMenu()
     }
 
     render() {
@@ -82,5 +87,5 @@ class Home extends React.Component {
 
 export default connect(
     mapStateToProps,
-    { fetchContent, toggleInfo }
+    { fetchContent, toggleInfo, closeMenu }
 )(Home)

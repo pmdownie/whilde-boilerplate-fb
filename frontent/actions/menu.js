@@ -7,6 +7,10 @@ const toggle = open => {
     }
 }
 
+export const closeMenu = () => dispatch => {
+    dispatch(toggle(false))
+}
+
 export const toggleMenu = () => (dispatch, getState) => {
     const { open } = getState().menu
     dispatch(toggle(!open))

@@ -28,7 +28,7 @@ const Container = styled.div`
         justify-self: stretch;
 
         @media (max-width: ${({ theme }) => theme.mobile}) {
-            height: 98%;
+            height: 85%;
             align-self: center;
         }
     }
@@ -43,28 +43,6 @@ class Homepage extends Component {
 
     componentDidMount() {
         this.setGallery()
-        if (this.props.device.mobile)
-            this.autoplay = setInterval(() => this.setAutoPlay(), 5000)
-    }
-
-    componentDidUpdate(prevProps) {
-        const { mobile } = this.props.device
-        if (mobile && mobile !== prevProps.device.mobile)
-            this.autoplay = setInterval(() => this.setAutoPlay(), 5000)
-        if (!mobile && mobile !== prevProps.device.mobile)
-            clearTimeout(this.autoplay)
-    }
-
-    componentWillUnmount() {
-        clearTimeout(this.autoplay)
-    }
-
-    setAutoPlay = () => {
-        const { active } = this.state
-        const { categories } = this.props.homepage.content
-
-        if (active === categories.length) return this.setState({ active: 0 })
-        return this.setState(({ active }) => ({ active: active + 1 }))
     }
 
     setGallery = () => {

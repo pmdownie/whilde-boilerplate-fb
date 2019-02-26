@@ -68,7 +68,7 @@ const Nav = ({
                         href={`/category?category=${item.id}`}
                         as={`/${item.id}`}
                     >
-                        <a onClick={mobile ? toggleMenu : null}>{item.title}</a>
+                        <a>{item.title}</a>
                     </Link>
                 </li>
             ))}

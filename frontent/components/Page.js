@@ -65,6 +65,10 @@ const GlobalStyle = createGlobalStyle`
     body,
     #__next {
         height: 100%;
+
+        @media (min-width: ${theme.desktop}) {
+            overflow: hidden;
+        }
     }
 
     html {
@@ -80,7 +84,7 @@ const GlobalStyle = createGlobalStyle`
     body {
         padding: 0;
         margin: 0;
-        font-size: 2rem;
+        font-size: 2.2rem;
         line-height: 2;
         overflow-x: hidden;
         letter-spacing: -0.01rem;
@@ -90,11 +94,11 @@ const GlobalStyle = createGlobalStyle`
         -moz-osx-font-smoothing: grayscale;
 
         @media (max-width: ${theme.tablet}) {
-            font-size: 1.5rem;
+            font-size: 1.9rem;
         }
 
         @media (max-width: ${theme.mobile}) {
-            font-size: 1.3rem;
+            font-size: 1.7rem;
         }
     }
 
