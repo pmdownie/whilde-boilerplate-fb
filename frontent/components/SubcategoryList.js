@@ -7,14 +7,19 @@ const Container = styled.ul`
     left: 3rem;
     z-index: ${({ theme }) => theme.zIndexSubcatList};
 
-    @media (max-width: ${({ theme }) => theme.mobile}) {
-        display: none;
+    @media (max-width: ${({ theme }) => theme.tablet}) {
+        top: -1rem;
+        width: 100%;
     }
 `
 const ListItem = styled.li`
     position: relative;
     color: ${({ theme }) => theme.lightgrey};
     line-height: 1.6;
+
+    @media (max-width: ${({ theme }) => theme.tablet}) {
+        position: absolute;
+    }
 
     &:hover {
         span {
@@ -31,14 +36,26 @@ const ListItem = styled.li`
         position: relative;
         cursor: pointer;
         display: inline-block;
-        transition: transform 0.25s ease-in-out;
+        transition: all 0.25s ease-in-out;
+
+        @media (max-width: ${({ theme }) => theme.tablet}) {
+            opacity: 0;
+            transform: translateX(2.8rem);
+            color: ${({ theme }) => theme.black};
+        }
 
         ${({ active }) =>
             active &&
             css`
-                transform: translateX(2.8rem);
-                transition: all 0.2s ease-in-out;
-                color: ${({ theme }) => theme.black};
+                @media (min-width: ${({ theme }) => theme.desktop}) {
+                    transform: translateX(2.8rem);
+                    transition: all 0.2s ease-in-out;
+                    color: ${({ theme }) => theme.black};
+                }
+
+                @media (max-width: ${({ theme }) => theme.tablet}) {
+                    opacity: 1;
+                }
             `}
     }
 

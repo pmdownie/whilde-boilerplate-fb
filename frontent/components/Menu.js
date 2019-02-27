@@ -30,14 +30,14 @@ const Container = styled.div`
     }
 `
 
-const Menu = ({ menu, toggleInfo, toggleMenu }) => (
+const Menu = ({ menu, toggleInfo, toggleMenu, pathname }) => (
     <FullPageBlock zIndex="zIndexMenu" open={menu.open} slideIn>
         <Container>
             <div
                 className="home"
                 onClick={() => {
                     Router.push('/')
-                    toggleMenu()
+                    pathname === '/' && toggleMenu()
                 }}
             >
                 Home

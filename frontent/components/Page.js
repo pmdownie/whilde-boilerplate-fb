@@ -1,4 +1,5 @@
 import React from 'react'
+import { withRouter } from 'next/router'
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
 import Router from 'next/router'
 import NProgress from 'nprogress'
@@ -128,18 +129,18 @@ const Inner = styled.div`
     overflow-x: hidden;
 `
 
-const Page = ({ children }) => (
+const Page = ({ children, router }) => (
     <ThemeProvider theme={theme}>
         <DetectDevice>
             <Inner>
                 <Meta />
                 <GlobalStyle />
                 <Info />
-                <Menu />
+                <Menu pathname={router.pathname} />
                 {children}
             </Inner>
         </DetectDevice>
     </ThemeProvider>
 )
 
-export default Page
+export default withRouter(Page)
