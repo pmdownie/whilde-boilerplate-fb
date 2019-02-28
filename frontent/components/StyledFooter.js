@@ -16,6 +16,9 @@ const StyledFooter = styled.footer`
         @media (min-width: ${({ theme }) => theme.desktop}) {
             font-size: 1.8rem;
         }
+        @media (max-width: ${({ theme }) => theme.mobile}) {
+            font-size: 1.4rem;
+        }
     }
 
     .center {

@@ -38,6 +38,22 @@ class Category extends Component {
     }
 
     componentDidMount() {
+        this.init()
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        const { asPath } = this.props.router
+        const { listView, active } = this.state
+        if (!listView && listView !== prevState.listView) {
+            this.slider.slickGoTo(active)
+        }
+
+        if (asPath !== prevProps.router.asPath) {
+            this.init()
+        }
+    }
+
+    init = () => {
         this.props.closeMenu()
         this.setState({
             subCategoryActive: this.props.categories.loaded
@@ -45,13 +61,6 @@ class Category extends Component {
                       .subcategory
                 : '',
         })
-    }
-
-    componentDidUpdate(prevProps, prevState) {
-        const { listView, active } = this.state
-        if (!listView && listView !== prevState.listView) {
-            this.slider.slickGoTo(active)
-        }
     }
 
     settings = () => {

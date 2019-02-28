@@ -19,25 +19,19 @@ const Slide = styled.div`
     justify-content: center;
     height: 100%;
 
-    img {
+    .image {
+        height: 86%;
         width: 60%;
+        background-image: url(https:${({ image }) => image});
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100%;
 
-        @media (max-width: ${({ theme }) => theme.mobile}) {
-            display: none;
-        }
-    }
-
-    .mobile {
-        display: none;
-        width: 100%;
-        height: 60%;
-
-        @media (max-width: ${({ theme }) => theme.mobile}) {
-            display: block;
+        @media (max-width: ${({ theme }) => theme.tablet}) {
+            width: 100%;
+            height: 60%;
             background-image: url(https:${({ imageMobile }) => imageMobile});
-            background-position: center;
             background-size: 140%;
-            background-repeat: no-repeat;
         }
     }
 `
@@ -82,12 +76,12 @@ const Slider = ({ settings, sliderRef, category, next, prev }) => {
             />
             <SliderContainer {...sliderSettings} ref={sliderRef}>
                 {category.artworks.map((image, i) => (
-                    <Slide key={i} imageMobile={image.smallImage.url}>
-                        <img
-                            src={`https:${image.largeImage.url}`}
-                            alt={image.title}
-                        />
-                        <div className="mobile" />
+                    <Slide
+                        key={i}
+                        image={image.largeImage.url}
+                        imageMobile={image.smallImage.url}
+                    >
+                        <div className="image" />
                     </Slide>
                 ))}
             </SliderContainer>
