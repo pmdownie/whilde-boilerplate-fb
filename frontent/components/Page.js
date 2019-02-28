@@ -24,6 +24,7 @@ const theme = {
     black: '#000000',
     white: '#ffffff',
     grey: '#6f6f6f',
+    vlightgrey: '#ebebeb',
     lightgrey: '#ababab',
     gutters: '30px',
 

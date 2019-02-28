@@ -7,6 +7,7 @@ import { withRouter } from 'next/router'
 import styled from 'styled-components'
 import StyledHeader from '../components/StyledHeader'
 import StyledFooter from '../components/StyledFooter'
+import Logo from '../components/Logo'
 import CategoryBody from '../components/CategoryBody'
 import MenuTrigger from '../components/MenuTrigger'
 
@@ -121,11 +122,13 @@ class Category extends Component {
             <Container>
                 <StyledHeader {...this.state} infoOpen={this.props.info.open}>
                     <div>
-                        {this.props.info.open
-                            ? 'Info'
-                            : this.props.menu.open
-                            ? ''
-                            : category.title}
+                        {this.props.info.open ? (
+                            'Info'
+                        ) : this.props.menu.open ? (
+                            <Logo white={this.props.info.open} />
+                        ) : (
+                            category.title
+                        )}
                     </div>
                     <div
                         className="right hideMobile cursor hoverGrey"

@@ -60,8 +60,6 @@ class Home extends React.Component {
                             ) : (
                                 <Logo white={this.props.info.open} />
                             )
-                        ) : this.props.menu.open ? (
-                            ''
                         ) : (
                             <Logo white={this.props.info.open} />
                         )}

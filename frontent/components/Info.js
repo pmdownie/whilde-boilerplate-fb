@@ -93,6 +93,10 @@ const Link = styled.li`
     cursor: pointer;
     transition: all 0.25s ease;
 
+    @media (min-width: ${({ theme }) => theme.desktop}) {
+        font-size: 1.9rem;
+    }
+
     ${({ active }) =>
         active &&
         css`
