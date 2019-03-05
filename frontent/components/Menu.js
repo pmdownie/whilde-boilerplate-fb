@@ -12,13 +12,14 @@ const Container = styled.div`
     display: grid;
     grid-template-rows: auto min-content auto;
     height: 100%;
+    padding-top: 3rem;
     background: ${({ theme }) => theme.vlightgrey};
     justify-items: center;
     align-items: center;
 
     .home,
     .info {
-        font-size: 2.9rem;
+        font-size: 3.5rem;
     }
 
     .home {
