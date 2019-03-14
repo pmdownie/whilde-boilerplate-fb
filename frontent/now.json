@@ -9,6 +9,6 @@
         }
     ],
     "env": {
-        "ENDPOINT": "https://api.nadinedewart.com"
+        "ENDPOINT": "https://api.whilde.studio"
     }
 }

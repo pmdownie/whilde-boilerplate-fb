@@ -5,8 +5,6 @@ import Router from 'next/router'
 import NProgress from 'nprogress'
 import Meta from './Meta'
 import DetectDevice from './DetectDevice'
-import Info from '../components/Info'
-import Menu from '../components/Menu'
 
 Router.onRouteChangeStart = () => {
     NProgress.start()
@@ -136,8 +134,6 @@ const Page = ({ children, router }) => (
             <Inner>
                 <Meta />
                 <GlobalStyle />
-                <Info />
-                <Menu pathname={router.pathname} />
                 {children}
             </Inner>
         </DetectDevice>

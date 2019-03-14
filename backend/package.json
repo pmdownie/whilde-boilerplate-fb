@@ -1,5 +1,5 @@
 {
-  "name": "nadine-dewart-backend",
+  "name": "whilde-backend-boilerplate",
   "version": "1.0.0",
   "description": "Boilerplate for REST Api's with express, mongoose and mondodb",
   "main": "index.js",
