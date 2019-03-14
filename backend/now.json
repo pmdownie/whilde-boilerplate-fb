@@ -1,9 +1,4 @@
 {
     "version": 1,
-    "name": "backend",
-    "env": {
-        "PORT": "@nd-port",
-        "SPACE_ID": "@nd-space-id",
-        "ACCESS_TOKEN": "@nd-access-token"
-      }
+    "name": "backend"
 }

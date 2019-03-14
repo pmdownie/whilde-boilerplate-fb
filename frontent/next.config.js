@@ -8,6 +8,6 @@ if (dotEnvResult.error) {
 module.exports = {
     target: 'serverless',
     env: {
-        ENDPOINT: prod ? 'https://api.nadinedewart.com' : process.env.ENDPOINT,
+        ENDPOINT: prod ? 'https://api.whilde.studio' : process.env.ENDPOINT,
     },
 }
